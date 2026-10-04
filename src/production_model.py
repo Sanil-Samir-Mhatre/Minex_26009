@@ -270,10 +270,16 @@ def predict_whatif(reg, clf, overrides: dict) -> dict:
         X = pd.DataFrame([{k: row[k] for k in REG_FEATURES}])
         explainer = shap.TreeExplainer(reg)
         shap_vals = explainer.shap_values(X)
+        if hasattr(shap_vals, "values"):
+            shap_vals = shap_vals.values
         sv = shap_vals[0] if not isinstance(shap_vals, list) else shap_vals[0]
+        sv = np.ravel(sv)
         result["shap_values"]   = sv.tolist()
         result["shap_features"] = REG_FEATURES
-        result["shap_base"]     = float(explainer.expected_value)
+        ev = explainer.expected_value
+        if isinstance(ev, (list, np.ndarray)):
+            ev = ev[0]
+        result["shap_base"]     = float(ev)
     except Exception:
         result["shap_values"]   = None
         result["shap_features"] = REG_FEATURES

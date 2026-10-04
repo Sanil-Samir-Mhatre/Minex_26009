@@ -348,12 +348,29 @@ with tab_shap:
         st.markdown("**Global SHAP — Which features drive prospectivity most?**")
         shap_vals, shap_sample, feat_cols = get_shap_values(rf_model, geo_pred, n_samples=150)
         if shap_vals is not None:
-            mean_abs_shap = np.abs(shap_vals).mean(axis=0)
+            shap_array = np.asarray(shap_vals)
+            if shap_array.ndim == 3:
+                shap_array = shap_array[:, :, 1] if shap_array.shape[2] > 1 else shap_array[:, :, 0]
+            mean_abs_shap = np.abs(shap_array).mean(axis=0)
+            if hasattr(mean_abs_shap, "ndim") and mean_abs_shap.ndim > 1:
+                mean_abs_shap = mean_abs_shap[:, 1] if mean_abs_shap.shape[1] > 1 else mean_abs_shap[:, 0]
+            # Ensure SHAP values are 1-dimensional and match feature list length
+            mean_abs_shap = np.ravel(mean_abs_shap)
+            # Truncate or pad to align with feature columns
+            if len(mean_abs_shap) != len(feat_cols):
+                min_len = min(len(mean_abs_shap), len(feat_cols))
+                mean_abs_shap = mean_abs_shap[:min_len]
+                feat_cols_trim = feat_cols[:min_len]
+                label_trim = [FEATURE_LABELS.get(f, f) for f in feat_cols_trim]
+            else:
+                feat_cols_trim = feat_cols
+                label_trim = [FEATURE_LABELS.get(f, f) for f in feat_cols]
             shap_df = pd.DataFrame({
-                "feature": feat_cols,
-                "label":   [FEATURE_LABELS.get(f, f) for f in feat_cols],
+                "feature": feat_cols_trim,
+                "label": label_trim,
                 "mean_abs_shap": mean_abs_shap,
             }).sort_values("mean_abs_shap", ascending=True)
+
 
             fig_shap_global = go.Figure(go.Bar(
                 x=shap_df["mean_abs_shap"],
@@ -401,6 +418,8 @@ with tab_shap:
 
         ev, sv, labels, fvals = get_shap_single(rf_model, sel_row)
         if sv is not None:
+            sv = np.ravel(sv)
+            fvals = np.ravel(fvals)
             shap_row = pd.DataFrame({
                 "label":      labels,
                 "shap_value": sv,

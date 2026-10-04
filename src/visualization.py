@@ -216,7 +216,18 @@ def risk_donut(pred_df: pd.DataFrame) -> go.Figure:
 
 # ── SHAP bar chart ────────────────────────────────────────────────────────────
 def shap_bar_chart(shap_vals, sample_df, feature_names: list, title: str = "SHAP Mean |Value|") -> go.Figure:
+    if hasattr(shap_vals, "values"):
+        shap_vals = shap_vals.values
+    if isinstance(shap_vals, list):
+        shap_vals = shap_vals[1] if len(shap_vals) > 1 else shap_vals[0]
+    shap_vals = np.asarray(shap_vals)
+    if shap_vals.ndim == 3:
+        shap_vals = shap_vals[:, :, 1] if shap_vals.shape[2] > 1 else shap_vals[:, :, 0]
     mean_abs = np.abs(shap_vals).mean(axis=0)
+    if hasattr(mean_abs, "ndim") and mean_abs.ndim > 1:
+        mean_abs = mean_abs[:, 1] if mean_abs.shape[1] > 1 else mean_abs[:, 0]
+    mean_abs = np.ravel(mean_abs)
+
     order = np.argsort(mean_abs)
     top_n = min(12, len(order))
     idx = order[-top_n:]

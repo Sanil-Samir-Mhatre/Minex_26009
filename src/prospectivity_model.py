@@ -197,8 +197,13 @@ def get_shap_values(rf_model, df: pd.DataFrame, n_samples: int = 200):
         sample = df[FEATURE_COLS].sample(min(n_samples, len(df)), random_state=42)
         explainer = shap.TreeExplainer(rf_model)
         shap_vals = explainer.shap_values(sample)
+        if hasattr(shap_vals, "values"):
+            shap_vals = shap_vals.values
         if isinstance(shap_vals, list):
-            shap_vals = shap_vals[1]
+            shap_vals = shap_vals[1] if len(shap_vals) > 1 else shap_vals[0]
+        elif isinstance(shap_vals, np.ndarray) and shap_vals.ndim == 3:
+            shap_vals = shap_vals[:, :, 1] if shap_vals.shape[2] > 1 else shap_vals[:, :, 0]
+        shap_vals = np.asarray(shap_vals)
         return shap_vals, sample, FEATURE_COLS
     except Exception:
         return None, None, FEATURE_COLS
@@ -211,10 +216,25 @@ def get_shap_single(rf_model, row_df: pd.DataFrame):
         X = row_df[FEATURE_COLS].copy()
         explainer = shap.TreeExplainer(rf_model)
         shap_vals = explainer.shap_values(X)
-        sv = shap_vals[1][0] if isinstance(shap_vals, list) else shap_vals[0]
+        if hasattr(shap_vals, "values"):
+            shap_vals = shap_vals.values
+        if isinstance(shap_vals, list):
+            sv = shap_vals[1][0] if len(shap_vals) > 1 else shap_vals[0][0]
+        elif isinstance(shap_vals, np.ndarray):
+            if shap_vals.ndim == 3:
+                sv = shap_vals[0, :, 1] if shap_vals.shape[2] > 1 else shap_vals[0, :, 0]
+            elif shap_vals.ndim == 2:
+                sv = shap_vals[0]
+            else:
+                sv = shap_vals
+        else:
+            sv = np.array(shap_vals)
+        sv = np.ravel(sv)
         ev = explainer.expected_value
-        ev = ev[1] if isinstance(ev, (list, np.ndarray)) else ev
+        if isinstance(ev, (list, np.ndarray)):
+            ev = ev[1] if len(ev) > 1 else ev[0]
         labels = [FEATURE_LABELS.get(f, f) for f in FEATURE_COLS]
-        return float(ev), sv, labels, X.iloc[0].values
+        fvals = np.ravel(X.iloc[0].values)
+        return float(ev), sv, labels, fvals
     except Exception:
         return None, None, [FEATURE_LABELS.get(f, f) for f in FEATURE_COLS], None
