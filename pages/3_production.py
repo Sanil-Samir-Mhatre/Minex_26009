@@ -235,14 +235,14 @@ if not forecast_df.empty:
     disp_df = forecast_df[show_cols].copy()
     disp_df["date"] = disp_df["date"].dt.strftime("%Y-%m-%d")
     disp_df.columns = ["Date","Mine","Planned (t)","Predicted (t)","Shortfall (t)","Shortfall %","Risk"]
-    st.dataframe(
-        disp_df.style.applymap(
-            lambda v: f"color: {RISK_COLOURS.get(v,'#fff')}" if v in RISK_COLOURS else "",
-            subset=["Risk"],
-        ),
-        use_container_width=True,
-        height=300,
-    )
+    risk_style_fn = lambda v: f"color: {RISK_COLOURS.get(v,'#fff')}" if v in RISK_COLOURS else ""
+    styler = disp_df.style
+    # pandas >= 2.1 renamed Styler.applymap -> Styler.map (applymap removed in pandas 3.0)
+    if hasattr(styler, "map"):
+        styler = styler.map(risk_style_fn, subset=["Risk"])
+    else:
+        styler = styler.applymap(risk_style_fn, subset=["Risk"])
+    st.dataframe(styler, use_container_width=True, height=300)
 
 # ── Shortfall analysis ─────────────────────────────────────────────────────────
 st.markdown("---")
