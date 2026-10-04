@@ -481,4 +481,4 @@ with tab_stats:
     st.plotly_chart(fig_fi, use_container_width=True, key="feat_imp_chart")
 
 st.markdown("---")
-st.caption("MOIL AI Mining Intelligence Platform | USP-2,3,4,5,6 Active | SIH 2024 #26009")
+st.caption("MOIL AI Mining Intelligence Platform | USP-2,3,4,5,6 Active | SIH 2026 #26009")

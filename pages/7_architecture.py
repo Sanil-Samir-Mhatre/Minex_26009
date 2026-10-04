@@ -303,4 +303,4 @@ The Streamlit frontend would be deployed on MOIL's internal server or a governme
 """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption("MOIL AI Mining Intelligence Platform | SIH 2024 Problem #26009 | Ministry of Steel — MOIL Ltd.")
+st.caption("MOIL AI Mining Intelligence Platform | SIH 2026 Problem #26009 | Ministry of Steel — MOIL Ltd.")

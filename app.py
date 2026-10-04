@@ -357,7 +357,7 @@ st.markdown("""
         <span class="badge">🛰️ Sentinel-2 Satellite</span>
         <span class="badge badge-orange">🤖 XGBoost AI/ML</span>
         <span class="badge badge-purple">🗺️ GIS Mapping</span>
-        <span class="badge">📊 Smart India Hackathon 2024</span>
+        <span class="badge">📊 Smart India Hackathon 2026</span>
         <span class="badge badge-orange">Problem #26009</span>
     </div>
 </div>
@@ -437,4 +437,4 @@ with col2:
         st.switch_page("pages/3_production.py")
 
 st.markdown("---")
-st.caption("MOIL AI Mining Intelligence Platform | Smart India Hackathon 2024 | Problem #26009 | Ministry of Steel — MOIL Ltd.")
+st.caption("MOIL AI Mining Intelligence Platform | Smart India Hackathon 2026 | Problem #26009 | Ministry of Steel — MOIL Ltd.")

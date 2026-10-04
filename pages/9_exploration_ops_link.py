@@ -265,4 +265,4 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown("---")
-st.caption("MOIL AI Mining Intelligence Platform | USP-8: Exploration-Operations Link | SIH 2024 #26009")
+st.caption("MOIL AI Mining Intelligence Platform | USP-8: Exploration-Operations Link | SIH 2026 #26009")

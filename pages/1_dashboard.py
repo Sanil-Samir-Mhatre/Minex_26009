@@ -66,7 +66,7 @@ with st.sidebar:
         value=(pd.Timestamp("2024-10-01"), pd.Timestamp("2024-12-31")),
     )
     st.markdown("---")
-    st.caption("MOIL AI Mining Intelligence\nSIH 2024 — Problem #26009")
+    st.caption("MOIL AI Mining Intelligence\nSIH 2026 — Problem #26009")
 
 # ── Page title ─────────────────────────────────────────────────────────────────
 st.markdown("""

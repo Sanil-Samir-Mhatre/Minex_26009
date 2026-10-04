@@ -232,4 +232,4 @@ else:
     st.info("Install `shap` package to see SHAP explanations: `pip install shap`")
 
 st.markdown("---")
-st.caption("MOIL AI Mining Intelligence Platform | USP-7: What-if Production Simulator | SIH 2024 #26009")
+st.caption("MOIL AI Mining Intelligence Platform | USP-7: What-if Production Simulator | SIH 2026 #26009")

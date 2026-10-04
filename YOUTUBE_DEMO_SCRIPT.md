@@ -1,6 +1,6 @@
 # 🎬 MINEX: YouTube Video Recording & Demonstration Script
 ### Video Duration: ~4:30 – 5:00 Minutes
-### Problem Statement: SIH 2024 #26009 — MOIL Ltd. (Ministry of Steel)
+### Problem Statement: SIH 2026 #26009 — MOIL Ltd. (Ministry of Steel)
 > **Goal:** High-impact, professional screen-recording presentation demonstrating every page of the application with clear visual cues and exact spoken voiceover dialogue.
 
 ---
@@ -27,7 +27,7 @@
 ### [0:00 – 0:30] — Introduction & Platform Overview
 * **🖥️ Screen Action:** Start on the main **Home page** (`app.py`). Show the title banner, platform architecture cards, and system status indicators.
 * **🗣️ Spoken Voiceover:**
-  > "Hello everyone! Welcome to the demonstration of **MINEX**, our AI and Space Technology-driven Mining Intelligence Platform developed for **Smart India Hackathon 2024, Problem Statement #26009 for MOIL Limited, Ministry of Steel**.
+  > "Hello everyone! Welcome to the demonstration of **MINEX**, our AI and Space Technology-driven Mining Intelligence Platform developed for **Smart India Hackathon 2026, Problem Statement #26009 for MOIL Limited, Ministry of Steel**.
   >
   > MOIL is India's largest producer of manganese ore. Their primary operational hurdles are two-fold: first, **exploring vast geographical areas** to locate high-potential manganese reserves; and second, **overcoming daily production shortfalls** caused by equipment breakdowns, severe monsoon rains, and operational delays.
   >

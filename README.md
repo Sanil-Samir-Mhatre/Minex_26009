@@ -1,5 +1,5 @@
 # ⛏️ MINEX: MOIL AI Mining Intelligence Platform
-### Smart India Hackathon 2024 — Problem Statement #26009
+### Smart India Hackathon 2026 — Problem Statement #26009
 > **"Using AI/ML and Space Technology to Identify Manganese Reserves and Overcome Production Shortfalls"**  
 > **Organization:** Ministry of Steel | **Department:** MOIL Ltd. | **Theme:** Space Technology  
 > **GitHub Repository:** [https://github.com/Sanil-Samir-Mhatre/Minex_26009](https://github.com/Sanil-Samir-Mhatre/Minex_26009)
@@ -262,7 +262,7 @@ Minex_26009/
 
 ## 🏛️ Team & Hackathon Details
 
-- **Event:** Smart India Hackathon (SIH) 2024
+- **Event:** Smart India Hackathon (SIH) 2026
 - **Problem Statement ID:** #26009
 - **Domain:** Space Technology / AI & ML in Mining
 - **Supported Organization:** MOIL Limited (Ministry of Steel, Govt. of India)
