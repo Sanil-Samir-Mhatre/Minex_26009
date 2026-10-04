@@ -1,0 +1,55 @@
+# MOIL AI Mining Intelligence Platform — Project Explanation
+
+## 1. Problem Statement (SIH 2024 #26009)
+**Title:** Using AI/ML and Space Technology to Identify Manganese Reserves and Overcome Production Shortfalls  
+**Organization:** Ministry of Steel | **Department:** MOIL Ltd. | **Theme:** Space Technology  
+
+**The Challenge:**
+MOIL Ltd. (Manganese Ore India Limited) is India's largest manganese ore producer. They face two primary challenges:
+1. **Exploration:** Identifying new manganese-bearing areas efficiently to sustain long-term production.
+2. **Operations:** Mining operations suffer from production shortfalls due to equipment breakdowns, severe weather (monsoons), and inefficient planning. 
+
+**The Goal:**
+Create a software solution that leverages Space Technology (satellite imagery) and AI/ML to guide future exploration and predict/prevent daily operational shortfalls.
+
+---
+
+## 2. Our Solution
+We built an end-to-end AI-powered **Mining Intelligence Dashboard** (using Streamlit) that operates on two distinct but connected pipelines:
+
+### Pipeline A: Manganese Prospectivity (Exploration)
+Instead of manually surveying vast tracts of land, we use satellite imagery to identify surface indicators of manganese.
+- **How it works:** We ingest Sentinel-2 satellite data and compute spectral indices like NDVI (vegetation), NDWI (water), and specific mineral ratios (Iron oxide and Clay indices). 
+- **AI Model:** An XGBoost Classifier analyzes these satellite signatures alongside geological data (lithology, fault proximity) to predict if a region has high potential for manganese occurrence.
+- **Scientific Caveat:** Satellites cannot see underground. This model generates a *Prospectivity Score* (a surface indicator prioritizing areas for drilling), not a confirmed *reserve estimate*.
+
+### Pipeline B: Production Shortfall Prediction (Operations)
+To stop production from falling behind targets, we predict shortfalls before they happen.
+- **How it works:** We track daily planned targets, equipment downtime, blasting delays, and rainfall (ERA5 weather data).
+- **AI Model:** An XGBoost Regressor predicts exactly how many tonnes will be mined today, and a Classifier categorizes the risk of missing the target (LOW, MEDIUM, HIGH, CRITICAL).
+- **Risk Engine:** A rule-based engine analyzes *why* the shortfall is happening and outputs actionable recommendations (e.g., "Deploy heavy-duty pumps due to high rainfall risk").
+
+---
+
+## 3. Technology Stack & Architecture
+
+- **Frontend / Dashboard:** `Streamlit`, built with a dark-theme, responsive UI and multi-page navigation.
+- **Machine Learning:** `scikit-learn`, `XGBoost`.
+- **Interpretability:** `SHAP` (SHapley Additive exPlanations) is used to explain *why* the model made a prediction (e.g., explaining that high downtime caused the shortfall).
+- **Mapping / GIS:** `Folium`, `streamlit-folium`, `Plotly`.
+- **Data Handling:** `Pandas`, `NumPy`.
+
+**Architecture Flow:**
+1. **Data Layer:** Synthetic proxies for Sentinel-2, ERA5 Weather, GSI geology, and MOIL operations.
+2. **Processing:** Feature engineering normalizes variables and computes complex indices.
+3. **Inference:** XGBoost models generate predictions.
+4. **Decision Engine:** Translates raw predictions into human-readable actions.
+5. **Presentation:** Streamlit dashboard renders the charts, maps, and tables.
+
+---
+
+## 4. Key Differentiators of this Project
+1. **Honest Science:** The platform explicitly states that satellites cannot estimate underground reserves, distinguishing between *prospectivity* and *reserves*. This shows deep domain understanding.
+2. **Interpretability:** The use of SHAP values ensures this is not a "black box" AI. Mine managers can see exactly which factors are driving risk.
+3. **Actionable Recommendations:** The rule-based engine doesn't just say "Production will fail"; it tells the manager *what to do* to fix it.
+4. **Production-Ready Design:** The codebase uses modular `src/` packages, caching, and a robust `.streamlit/secrets.toml` architecture for easy transition to real APIs.

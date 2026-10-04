@@ -1,0 +1,2 @@
+Trained model artifacts are auto-generated at runtime and saved here.
+Do not commit .pkl files to version control if they contain sensitive data.

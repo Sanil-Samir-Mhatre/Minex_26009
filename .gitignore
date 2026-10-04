@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Streamlit secrets (CRITICAL: Never commit active secrets)
+.streamlit/secrets.toml
+*.secrets.toml
+.streamlit/secrets*.toml
+!.streamlit/secrets.toml.example
+
+# Datasets
+data/satellite/*
+data/geological/*
+data/weather/*
+data/operational/*
+!data/**/README.txt
+
+# Models
+models/*.pkl
+!models/.gitkeep
+

@@ -1,0 +1,46 @@
+# Smart India Hackathon — Viva & Interview Preparation Guide
+
+This document prepares you for the SIH jury evaluation. Judges will test your technical depth, domain knowledge (mining/geology), and practical viability.
+
+---
+
+## 1. Domain & Conceptual Questions
+
+**Q: Can your satellite model estimate underground manganese reserves?**
+**Strong Answer:** *"No, and claiming so would be scientifically inaccurate. Satellites (like Sentinel-2) only capture surface reflectance. Our model identifies 'Manganese Prospectivity' — meaning it finds surface spectral signatures (like iron oxide or clay alteration zones) and geological structures associated with manganese. This score tells MOIL *where to drill first*, significantly cutting down exploration costs, but physical drilling is still required to confirm underground reserves."*
+
+**Q: Why did you use Sentinel-2 over other satellites?**
+**Strong Answer:** *"Sentinel-2 provides high spatial resolution (10m-20m) and specifically includes Short-Wave Infrared (SWIR) bands (B11 and B12). SWIR bands are critical for geological remote sensing because they allow us to calculate clay mineral ratios and bare soil indices, which are highly correlated with mineral alteration zones."*
+
+**Q: What is the difference between the Regressor and Classifier in your production model?**
+**Strong Answer:** *"The Regressor predicts the exact continuous output in tonnes/day. However, mine managers often just need to know the severity of the problem to prioritize their attention. Therefore, we added a Classifier to group the shortfall into actionable risk buckets (LOW, MEDIUM, HIGH, CRITICAL) based on the percentage deviation from the planned target."*
+
+---
+
+## 2. Machine Learning & Technical Questions
+
+**Q: Why did you choose XGBoost instead of Deep Learning / Neural Networks?**
+**Strong Answer:** *"For tabular operational data (like equipment downtime and rainfall), tree-based ensemble models like XGBoost consistently outperform Deep Learning. XGBoost handles non-linear relationships well, requires less data to train, and crucially, it is highly interpretable. In a mining context, a manager won't trust a black-box Neural Network; they need to know *why* the model made a prediction."*
+
+**Q: How do you explain the model's predictions to a non-technical mine manager?**
+**Strong Answer:** *"We integrated SHAP (SHapley Additive exPlanations). Instead of just giving a prediction, SHAP breaks down exactly how much each feature contributed to that prediction. For example, the dashboard visually shows the manager: 'Your risk is HIGH, and 60% of that risk is driven by a 4-hour blasting delay.' "*
+
+**Q: How did you handle the lack of actual MOIL data for the hackathon?**
+**Strong Answer:** *"We built highly realistic synthetic data generators in Python that mimic seasonal mining operations (e.g., rainfall spiking during monsoons, equipment downtime distributions). The code is strictly modular — all data generation is isolated in `data_loader.py`. When MOIL provides real database access, we only have to replace the loader functions; the entire ML pipeline and dashboard will work instantly without modification."*
+
+---
+
+## 3. Practicality & Deployment Questions
+
+**Q: How does the Recommendation Engine work? Is it an LLM (like ChatGPT)?**
+**Strong Answer:** *"No, we deliberately avoided LLMs for the core logic to prevent hallucinations, which are unacceptable in industrial operations. We built a deterministic, rule-based Risk Engine. It takes the specific threshold breaches (e.g., rainfall > 50mm AND equipment downtime > 4hrs) and maps them to standard operating procedures (SOPs). It is fast, 100% reliable, and easily configurable by safety engineers."*
+
+**Q: How would this be deployed in a real MOIL environment securely?**
+**Strong Answer:** *"Because mining data is highly sensitive, this would not be hosted on the public internet. The Streamlit frontend and ML models would be packaged into Docker containers and deployed on MOIL's internal intranet (on-premise servers) or a government-approved secure cloud (like MeghRaj). We have already implemented `.streamlit/secrets.toml` to demonstrate secure API key handling."*
+
+---
+
+## 4. Quick Tips for the Presentation
+1. **Lead with the disclaimer:** Immediately tell the judges that you know satellites can't see underground. Geologists on the jury will instantly respect you for understanding this constraint.
+2. **Show, Don't Tell:** During the demo, click on the **SHAP Feature Importance** charts and the **Risk Recommendations** table. Show them how the AI *explains itself*.
+3. **Emphasize Modularity:** Point out the `Demo Mode` toggle and explain how easy it is to plug in real MOIL ERP databases. 

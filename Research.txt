@@ -1,0 +1,801 @@
+# Recent **AI/ML** Methods and **Multispectral** Limits
+
+Recent manganese mineral prospectivity mapping uses three linked method families: **multi-source ML classifiers**, newer **data-scarcity deep/semi-supervised models**, and **remote-sensing feature extraction** from multispectral plus, increasingly, hyperspectral data. The main limitation of satellite multispectral data is not usefulness but specificity: it can map host rocks, structures, iron oxides, and some alteration well, yet it often cannot uniquely identify manganese minerals or concealed ore without geological, geochemical, geophysical, and field constraints.  (Zhao et al., 2025; Singh et al., 2023; Tang et al., 2025; Sikakwe, 2023; Khurram et al., 2025)## AI/ML Methods
+
+The dominant 2020–2026 pattern is **supervised learning on fused evidence layers** built from geology, structures, geochemistry, geophysics, and remotely sensed products rather than raw imagery alone  (Sun et al., 2020; Senanayake et al., 2023; Zheng et al., 2023; Mitra et al., 2025). In manganese-specific work, the strongest recent example integrated multi-source remote sensing with machine learning in the Malkansu belt and found high performance for RF, Naïve Bayes, and XGBoost, with AUCs of 0.975, 0.983, and 0.916, then combined them into an 11-zone favorability map  (Zhao et al., 2025). That study also found **structural density and lithology** were the most influential predictors, with linear structures aligned to the manganese belt  (Zhao et al., 2025).
+
+- **Random Forest** is one of the most repeatedly strong and robust MPM models, often excelling in predictive efficiency even when CNN or SVM can match or exceed training accuracy  (Sun et al., 2020; Lachaud et al., 2023; Zheng et al., 2023).
+- **Ensembling** is increasingly common, either by overlaying RF/SVM/other model outputs or combining multiple learners to raise confidence and stabilize predictions  (Senanayake et al., 2023; Zheng et al., 2023; Mitra et al., 2025).
+- **Hyperparameter optimization** materially improves model performance in prospectivity mapping, with optimized models commonly pushing AUC above 0.8 and sometimes much higher  (Lin et al., 2021).
+
+## Emerging Models for Sparse Data
+
+A major recent shift is toward models designed for **limited labeled deposits**, because mineral prospectivity datasets are small and imbalanced relative to mainstream ML tasks  (Sun et al., 2020; Amirajlo et al., 2026). Deep forest was proposed as a non-neural deep model for remote-sensing-based prospectivity and achieved AUC 0.964 with fewer than 15 occurrences in one study, specifically targeting the early-exploration small-sample problem  (Taha et al., 2024). For manganese itself, a 2025 Songtao study used **Geo-WGAN plus biased-SVM plus Geo-DCNN** to generate synthetic ore-bearing samples, correct class imbalance, and improve generalization for deeper concealed Mn deposits  (Kong et al., 2025).
+
+- **Semi-supervised and generative methods** are now used to handle scarce positive manganese samples and hidden deep targets  (Kong et al., 2025).
+- **Calibration and reproducibility** matter as much as peak AUC under extreme scarcity; grid search sometimes yields more stable probabilities than Bayesian optimization  (Amirajlo et al., 2026).
+- **Interpretability-aware deep models** are also emerging, including attention CNNs, self-attention architectures, graph neural networks, and autoencoder-plus-ensemble hybrids  (Amirajlo et al., 2026).
+
+The workflow that many studies now converge on is visible in comparative and review papers: generate evidential layers from remote sensing and other geodata, train several ML models, validate with ROC/success-rate curves, then combine outputs into a consensus prospectivity map. A representative remote-sensing-plus-ML workflow for evidential map generation is shown here.  (Shirmard et al., 2021)**Figure 1:** Workflow for remote sensing mineral prospectivity mapping  (Shirmard et al., 2021)## Remote-Sensing Methods
+
+Recent manganese exploration still uses **multispectral enhancement** heavily, especially ASTER and Sentinel-2 products such as band ratios, PCA, SAM, and constrained-energy or matched-filter style anomaly extraction  (Singh et al., 2023; Tang et al., 2025; Khurram et al., 2025). In central India, VIS-NIR-SWIR multisensor optical data plus L-band microwave data were integrated, and the resulting anomaly maps correlated well with existing manganese mines  (Singh et al., 2023). In Pakistan, ASTER differentiated lithological units effectively, but **Hyperion hyperspectral data** were the more decisive tool for recognizing Mn minerals such as psilomelane and braunite through spectral matching  (Khurram et al., 2025).
+
+- **ASTER often outperforms other multispectral sensors** for alteration mapping, while Sentinel-2 and Landsat are widely used for regional screening and lithological contrast  (Sikakwe, 2023; Daoud et al., 2025; Shirmard et al., 2022).
+- **Hyperspectral data** provide narrower bands and better mineral discrimination than multispectral systems, especially for direct mineral identification  (Hajaj et al., 2024; Sikakwe, 2023; Daoud et al., 2025).
+- **Sensor fusion** generally gives more credible exploration results than any single sensor alone  (Sikakwe, 2023; Shirmard et al., 2021; Tang et al., 2025).
+
+## Multispectral Limitations
+
+The main remaining limitation of satellite multispectral data for manganese exploration is that it usually captures **indirect proxies** better than manganese ore itself: lithology, structures, iron staining, hydroxyl-bearing alteration, vegetation or terrain contrasts, and weathered surface expressions  (Tang et al., 2025; Daoud et al., 2025). That is why manganese studies repeatedly validate remote-sensing outputs with lab spectra, petrography, field mapping, geochemistry, or existing mine locations rather than treating image anomalies as ore proof  (Singh et al., 2023; Khurram et al., 2025).
+
+- **Spectral specificity is limited** in multispectral data; hyperspectral data are better for direct Mn mineral recognition because of narrower bands and richer absorption detail  (Sikakwe, 2023; Khurram et al., 2025).
+- **Surface and weathering effects** can mislead interpretation, because Mn anomalies can reflect secondary geochemical processes and redox sensitivity rather than primary ore controls  (Sun et al., 2020).
+- **Concealed and deep deposits** remain difficult for optical satellites, which is why newer manganese studies target weak information recovery, sample augmentation, and integration with subsurface geoscience layers  (Kong et al., 2025).
+
+Recent work also points to broader technical limits: uncertainty quantification is still underdeveloped in remote-sensing ML, advanced algorithms remain constrained by data scarcity, and high-resolution hyperspectral data are more informative but costlier and slower to process than standard multispectral imagery  (Shirmard et al., 2022; Tang et al., 2025; Wan et al., 2021).
+
+Recent 2020–2026 manganese prospectivity mapping therefore favors **multi-source ML ensembles** and, where data are sparse or deposits are concealed, newer **semi-supervised, generative, and deep-forest/deep-learning approaches**. Satellite multispectral data remain valuable for regional targeting, especially for structures, lithology, and alteration, but they are usually insufficient alone for reliable manganese exploration without higher-spectral-resolution data and ground-validated multi-source integration.
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Amirajlo, P., Hassani, H., Pour, A. B., & Habibkhah, N. (2026). Ensemble machine learning strategies for mineral prospectivity mapping under data scarcity. *Scientific Reports, 16*. https://doi.org/10.1038/s41598-026-40125-1
+ 
+Daoud, A. M. A., Shebl, A., Nafi, M., Elrasheed, A. A., Csámer, Á., & Rózsa, P. (2025). Machine learning-based lithological mapping and mineral prospecting using hyperspectral and multispectral remote sensing in Wadi Halfa, north Sudan. *Journal of African Earth Sciences*. https://doi.org/10.1016/j.jafrearsci.2025.105816
+ 
+Hajaj, S., Harti, E. A., Pour, A. B., Jellouli, A., Adiri, Z., & Hashim, M. (2024). A review on hyperspectral imagery application for lithological mapping and mineral prospecting: Machine learning techniques and future prospects. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2024.101218
+ 
+Khurram, S., Pour, A. B., Riaz, K., Fatima, A., & Ahmed, A. (2025). ASTER and Hyperion Satellite Remote Sensing Data for Lithological Mapping and Mineral Exploration in Ophiolitic Zones: A Case Study from Lasbela, Baluchistan, Pakistan. *Mining*. https://doi.org/10.3390/mining5030053
+ 
+Kong, C., Zhao, J., Li, B., Wu, C.-L., & Xu, K. (2025). Manganese mineral prospectivity mapping based on semi-supervised learning and multi-source geoscientific-sample Wasserstein generative adversarial network (Geo-WGAN) in Songtao of Guizhou, South China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2025.106933
+ 
+Lachaud, A., Adam, M., & Mišković, I. (2023). Comparative Study of Random Forest and Support Vector Machine Algorithms in Mineral Prospectivity Mapping with Limited Training Data. *Minerals*. https://doi.org/10.3390/min13081073
+ 
+Lin, N., Chen, Y., Liu, H., & Liu, H.-L. (2021). A Comparative Study of Machine Learning Models with Hyperparameter Optimization Algorithm for Mapping Mineral Prospectivity. *Minerals*. https://doi.org/10.3390/min11020159
+ 
+Mitra, S., Mallick, S., Biswas, S., & Patra, K. (2025). Advanced machine learning based gold prospectivity mapping in the Dharwar Craton, India: A hybrid knowledge-data driven paradigm integrating ensemble and deep learning. *Geosystems and Geoenvironment*. https://doi.org/10.1016/j.geogeo.2025.100473
+ 
+Senanayake, I. P., Kiem, A., Hancock, G., Metelka, V., Folkes, C., Blevin, P., & Budd, A. (2023). A Spatial Data-Driven Approach for Mineral Prospectivity Mapping. *Remote. Sens., 15*, 4074. https://doi.org/10.3390/rs15164074
+ 
+Shirmard, H., Farahbakhsh, E., Müller, R., & Chandra, R. (2021). A review of machine learning in processing remote sensing data for mineral exploration. *ArXiv, abs/2103.07678*. https://doi.org/10.1016/j.rse.2021.112750
+ 
+Shirmard, H., Farahbakhsh, E., Heidari, E., Pour, A. B., Pradhan, B., Müller, R., & Chandra, R. (2022). A Comparative Study of Convolutional Neural Networks and Conventional Machine Learning Models for Lithological Mapping Using Remote Sensing Data. *Remote. Sens., 14*, 819. https://doi.org/10.3390/rs14040819
+ 
+Sikakwe, G. U. (2023). Mineral exploration employing drones, contemporary geological satellite remote sensing and geographical information system (GIS) procedures: A review. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2023.100988
+ 
+Singh, S., Sarkar, S., Manche, S., Guha, A., & Kumar, K. V. (2023). Earth Observation Approach for Targeting Stratiform Deposit of Manganese in Central India. *Advances in Space Research*. https://doi.org/10.1016/j.asr.2023.03.044
+ 
+Sun, T., Wu, K.-X., Chen, F., Zhu, Z., & Hu, Z. (2020). Data-Driven Predictive Modelling of Mineral Prospectivity Using Machine Learning and Deep Learning Methods: A Case Study from Southern Jiangxi Province, China. *Minerals*. https://doi.org/10.3390/min10020102
+ 
+Taha, A. M. M., Liu, G., Chen, Q.-Y., Fan, W.-Y., Cui, Z., Wu, X.-C., & Fang, H.-F. (2024). Toward Data-Driven Mineral Prospectivity Mapping from Remote Sensing Data Using Deep Forest Predictive Model. *Natural Resources Research, 33*, 2407 - 2431. https://doi.org/10.1007/s11053-024-10387-5
+ 
+Tang, J., Zhang, H., Bai, R., Zhang, J., & Sun, T. (2025). Mineral Prospectivity Mapping for Exploration Targeting of Porphyry Cu-Polymetallic Deposits Based on Machine Learning Algorithms, Remote Sensing and Multi-Source Geo-Information. *Minerals*. https://doi.org/10.3390/min15101050
+ 
+Wan, Y., Fan, Y.-H., & Jin, M.-S. (2021). Application of hyperspectral remote sensing for supplementary investigation of polymetallic deposits in Huaniushan ore region, northwestern China. *Scientific Reports, 11*. https://doi.org/10.1038/s41598-020-79864-0
+ 
+Zhao, J.-H., He, L., Gong, J., He, Z.-W., Feng, Z.-W., Pang, J., Zeng, W., Yan, Y., & Yuan, Y. (2025). Predicting Manganese Mineralization Using Multi-Source Remote Sensing and Machine Learning: A Case Study from the Malkansu Manganese Belt, Western Kunlun. *Minerals*. https://doi.org/10.3390/min15020113
+ 
+Zheng, C.-J., Yuan, F., Luo, X.-R., Li, X.-H., Liu, P.-F., Wen, M.-L., Chen, Z.-S., & Albanese, S. (2023). Mineral prospectivity mapping based on Support vector machine and Random Forest algorithm-A case study from Ashele copper-zinc deposit, Xinjiang, NW China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2023.105567
+ 
+
+
+# **Machine Learning** for Mineral Prospectivity
+
+Recent research extensively explores multi-source geospatial data fusion, emerging architectures for sparse deposits, and critical limitations surrounding underexplored data combinations  (Abedini et al., 2023; Yuan et al., 2026; Tang et al., 2025).
+
+Recent mineral prospectivity mapping (MPM) integrates remote sensing, geology, geochemistry, and geophysics to locate mineralized bodies  (Senanayake et al., 2023; Mitra et al., 2025; Fu et al., 2023). However, substantial gaps remain in establishing physical coupling across disparate data layers  (Yuan et al., 2026; Tang et al., 2025).
+
+## Multi-Source Data Integration
+
+Recent MPM frameworks process high-dimensional datasets into standardized predictor layers capturing source, pathway, and trap processes  (Shirmard et al., 2021; Sun et al., 2019; Heidari et al., 2026). Optical satellite sensors like ASTER, Sentinel-2, and hyperspectral platforms extract alteration indices such as phyllic, argillic, or propylitic alteration  (Tang et al., 2025; Fu et al., 2023). These remote sensing layers are stacked alongside bedrock lithologies, structural fault buffers, and multielement stream or soil geochemical anomalies  (Tang et al., 2025; He et al., 2024).
+
+- Ensembles of tree-based models and shallow classifiers consistently identify prospective belts with high spatial efficiency  (Tang et al., 2025; Senanayake et al., 2023; Mitra et al., 2025).
+- Random forest algorithms frequently yield superior stability and interpretability over non-ensemble counterparts  (Mahboob et al., 2024; Sun et al., 2019; Sun et al., 2020).
+- Subsurface geophysics, such as gravity and magnetics, complement surficial geochemical and spectral alteration footprints  (Heidari et al., 2026; Senanayake et al., 2023; Zheng et al., 2023).
+
+## Advanced Learning Architectures
+
+Data sparsity and extreme class imbalance remain standard constraints in prospectivity modeling because economic mineral occurrences are rare  (Tang et al., 2025; Li et al., 2024; Mantilla-Dulcey et al., 2024). To counter label scarcity, recent workflows leverage positive-unlabeled bagging, semi-supervised formulations, and generative adversarial frameworks  (Heidari et al., 2026; Li et al., 2024; Mantilla-Dulcey et al., 2024). Deep learning architectures like convolutional networks and deep autoencoders extract latent multi-scale spatial representations across complex non-linear evidential inputs  (Ghane et al., 2026; Xiong et al., 2018; Fu et al., 2023). 
+
+- Deep convolutional neural networks achieve test accuracies exceeding 95% on multi-element geochemical and remote sensing grids  (Fu et al., 2023; He et al., 2024).
+- Semi-supervised generative adversarial models capture more deposits within small prospective tracts than standard supervised baselines  (Li et al., 2024).
+- Unsupervised vision Transformers and autoencoders extract latent features without requiring manual label engineering  (Ning et al., 2025; Ghane et al., 2026).
+
+Workflows frequently convert multi-source geoinformation into distinct evidential raster layers that feed into machine learning models for anomaly prediction. A representative structure of this multi-source data processing pipeline illustrates how diverse inputs are unified. **Figure 1:** Pipeline diagram showing machine learning integration of remote sensing and geodata  (Shirmard et al., 2021)## Underexplored Data Combinations
+
+Despite progress in empirical stack integration, several key data pairings remain poorly addressed in the literature  (Yuan et al., 2026; Tang et al., 2025). Remote sensing alteration extractions are rarely reconciled against vertical geochemical zonality or thermodynamic dispersion haloes  (Abedini et al., 2023). Furthermore, quantitative geomorphological indices and digital elevation derivatives are seldom coupled dynamically with structural kinematics or deep geophysical surveys  (Tang et al., 2025).
+
+- Genetic links between quantitative terrain indices and subsurface hydrothermal alteration systems remain largely unformalized  (Tang et al., 2025).
+- Spaceborne hyperspectral data remain underutilized alongside multi-element lithogeochemistry due to processing expense and calibration gaps  (Tang et al., 2025; Hajaj et al., 2024; Fu et al., 2023).
+- Systematic integration of vertical zonality ratios with satellite-derived surface mineral indices remains poorly explored  (Abedini et al., 2023).
+
+## Evidence Coverage Across Exploration Inputs
+
+| | Multispectral Alteration | Hyperspectral Data | Topographic Indices | Geochemical Zonality |
+|---|---|---|---|---|
+| Supervised Ensembles | 4 papers | 1 paper | No papers | 6 papers |
+| Deep Convolutional Nets | 4 papers | 3 papers | No papers | 3 papers |
+| Generative Semi-Supervised | No papers | No papers | No papers | No papers |
+| Unsupervised Transformers | No papers | No papers | No papers | 1 paper |
+**Figure 2:** Coverage matrix of machine learning architectures across geological evidential data inputs
+
+The matrix highlights a distinct research void: modern deep architectures and generative semi-supervised models are frequently applied to standard multispectral grids and simple geochemical layers, but remain disconnected from specialized data types  (Yuan et al., 2026; Li et al., 2024; Fu et al., 2023). While conventional supervised ensembles are routinely tested against common alteration and lineament layers, rigorous integration with continuous numerical terrain indices and complex 3D geochemical dispersion ratios remains scarce  (Abedini et al., 2023; Tang et al., 2025). This persistence stems from the difficulty of reconciling planar remote sensing proxies with vertical metallogenic processes, limiting the operational detection of concealed, deep-seated ore deposits  (Abedini et al., 2023; Yuan et al., 2026; Fu et al., 2023).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Abedini, M., Ziaii, M., Timkin, T., & Pour, A. B. (2023). Machine Learning (ML)-Based Copper Mineralization Prospectivity Mapping (MPM) Using Mining Geochemistry Method and Remote Sensing Satellite Data. *Remote. Sens., 15*, 3708. https://doi.org/10.3390/rs15153708
+ 
+Fu, Y., Cheng, Q., Jing, L., Ye, B., & Fu, H. (2023). Mineral Prospectivity Mapping of Porphyry Copper Deposits Based on Remote Sensing Imagery and Geochemical Data in the Duolong Ore District, Tibet. *Remote. Sens., 15*, 439. https://doi.org/10.3390/rs15020439
+ 
+Ghane, B., Lentz, D. R., & Thorne, K. (2026). Deep autoencoder-guided machine learning for prospectivity mapping of intrusion-related Cu-Au mineral systems in southwestern New Brunswick, Canada. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2026.107250
+ 
+Hajaj, S., Harti, E. A., Pour, A. B., Jellouli, A., Adiri, Z., & Hashim, M. (2024). A review on hyperspectral imagery application for lithological mapping and mineral prospecting: Machine learning techniques and future prospects. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2024.101218
+ 
+He, H.-J., Zhu, H., Yang, X., Zhang, W., & Wang, J. (2024). Mineral prospectivity prediction based on convolutional neural network and ensemble learning. *Scientific Reports, 14*. https://doi.org/10.1038/s41598-024-73357-0
+ 
+Heidari, E., Farahbakhsh, E., Shirmard, H., Kohlmann, F., Blevin, P., & Müller, R. (2026). Machine learning framework for prospectivity mapping of Cu–Au porphyry mineralisation in the Lachlan Fold Belt, eastern Australia. *Journal of Asian Earth Sciences*. https://doi.org/10.1016/j.jseaes.2026.107018
+ 
+Li, Q., Chen, G.-X., & Wang, D.-T. (2024). Mineral Prospectivity Mapping Using Semi-supervised Machine Learning. *Mathematical Geosciences, 57*, 275 - 305. https://doi.org/10.1007/s11004-024-10161-6
+ 
+Mahboob, M., Çelik, T., & Genc, B. (2024). Predictive Modelling of Mineral Prospectivity Using Satellite Remote Sensing and Machine Learning Algorithms. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2024.101316
+ 
+Mantilla-Dulcey, A., Goyes-Peñafiel, P., Baez-Rodríguez, R., & Khurama, S. (2024). Porphyry-type mineral prospectivity mapping with imbalanced data via prior geological transfer learning. *Gondwana Research*. https://doi.org/10.1016/j.gr.2024.09.004
+ 
+Mitra, S., Mallick, S., Biswas, S., & Patra, K. (2025). Advanced machine learning based gold prospectivity mapping in the Dharwar Craton, India: A hybrid knowledge-data driven paradigm integrating ensemble and deep learning. *Geosystems and Geoenvironment*. https://doi.org/10.1016/j.geogeo.2025.100473
+ 
+Ning, Y., Wang, Y.-Z., Lu, J.-L., Tian, J., Wang, C., Sheng, S., Wen, S., Wang, S., & Dong, Y.-H. (2025). Mineral prospectivity mapping for multi-source geoscience data: A novel unsupervised deep learning method. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2025.106866
+ 
+Senanayake, I. P., Kiem, A., Hancock, G., Metelka, V., Folkes, C., Blevin, P., & Budd, A. (2023). A Spatial Data-Driven Approach for Mineral Prospectivity Mapping. *Remote. Sens., 15*, 4074. https://doi.org/10.3390/rs15164074
+ 
+Shirmard, H., Farahbakhsh, E., Müller, R., & Chandra, R. (2021). A review of machine learning in processing remote sensing data for mineral exploration. *ArXiv, abs/2103.07678*. https://doi.org/10.1016/j.rse.2021.112750
+ 
+Sun, T., Chen, F., Zhong, L., Liu, W., & Wang, Y. (2019). GIS-based mineral prospectivity mapping using machine learning methods: A case study from Tongling ore district, eastern China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2019.04.003
+ 
+Sun, T., Wu, K.-X., Chen, F., Zhu, Z., & Hu, Z. (2020). Data-Driven Predictive Modelling of Mineral Prospectivity Using Machine Learning and Deep Learning Methods: A Case Study from Southern Jiangxi Province, China. *Minerals*. https://doi.org/10.3390/min10020102
+ 
+Tang, J., Zhang, H., Bai, R., Zhang, J., & Sun, T. (2025). Mineral Prospectivity Mapping for Exploration Targeting of Porphyry Cu-Polymetallic Deposits Based on Machine Learning Algorithms, Remote Sensing and Multi-Source Geo-Information. *Minerals*. https://doi.org/10.3390/min15101050
+ 
+Xiong, Y.-H., Zuo, R., & Carranza, E. (2018). Mapping mineral prospectivity through big data analytics and a deep learning algorithm. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2018.10.006
+ 
+Yuan, M., Li, Q., Zhang, B., Pan, J., Gao, L.-R., Jing, L., & Lu, L.-L. (2026). A systematic review of deep learning methods for mineral exploration using multisource geoscience data (2018–2025). *International Journal of Applied Earth Observation and Geoinformation*. https://doi.org/10.1016/j.jag.2026.105254
+ 
+Zheng, C.-J., Yuan, F., Luo, X.-R., Li, X.-H., Liu, P.-F., Wen, M.-L., Chen, Z.-S., & Albanese, S. (2023). Mineral prospectivity mapping based on Support vector machine and Random Forest algorithm-A case study from Ashele copper-zinc deposit, Xinjiang, NW China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2023.105567
+ 
+
+
+# **Hyperspectral** gives **more specific mineral ID**; multispectral is effective for alteration screening and manganese targeting, but indirect.
+
+Recent studies split into **sensor-specific mineral mapping**, **manganese exploration workflows**, and **what multispectral data still miss**  (Shirkhani et al., 2025; Zhao et al., 2025; El-Omairi & Garouani, 2026).
+
+## Sensor Use
+
+Sentinel-2 and Landsat-8 are widely used to map **iron oxides, hydroxyl-bearing minerals, silicates, and some carbonates** from VNIR-SWIR band ratios, PCA, and SAM, especially for alteration mapping rather than direct ore identification  (Adiri et al., 2020; Habtemichael et al., 2026; Singh et al., 2023).
+
+ASTER remains especially strong for **OH-bearing and carbonate minerals** because its six SWIR bands resolve those absorption features better than Sentinel-2 or Landsat-8 in many settings  (Sekandari et al., 2020; Chniouar et al., 2024; Mohsin et al., 2025).
+
+Sentinel-2 often performs best for **iron-bearing minerals** because its VNIR placement and 10 m pixels improve mapping of hematite and related ferric features  (Kouzeli et al., 2026; Chniouar et al., 2024).
+
+Very high spatial resolution does not guarantee better mineral discrimination if spectral coverage is narrow: WV-3 VNIR was sensitive mainly to **ferric iron and Mn oxides/hydroxides**, while Sentinel-2 captured a broader Fe-Mn alteration suite because it also includes SWIR bands  (Sykioti et al., 2023).
+
+Hyperspectral sensors such as Hyperion, PRISMA, ZY-1E, and EnMap are used when studies need **directer mineral identification**, endmember extraction, and spectral matching against libraries or field spectra  (Khurram et al., 2025; Shirkhani et al., 2025; Mohsin et al., 2025; Van Der Meer et al., 2012).
+
+A comparison figure from one recent study shows how Sentinel-2 and WorldView-3 differed in mapped Fe-Mn-related absorptions, illustrating that spectral coverage can outweigh finer pixel size. **Figure 1:** Sentinel-2 absorption maps for Fe-Mn alteration minerals  (Sykioti et al., 2023)- **Band ratios and PCA** remain standard for multispectral enhancement  (Mayappan, 2019; Sikakwe, 2023).
+- **SAM, SFF, MNF, and matched filtering** are common for hyperspectral classification  (Wan et al., 2021; Shirkhani et al., 2025).
+- **Field spectra, XRD, petrography, and geochemistry** are routinely used for validation  (Shirkhani et al., 2025; Singh et al., 2023; Kouzeli et al., 2026).
+
+## Manganese Exploration
+
+Recent manganese studies use multispectral data mainly to map **host lithologies, structures, and alteration proxies**, then combine them with field or lab constraints to target ore  (Yang et al., 2024; Singh et al., 2023; Zhao et al., 2025).
+
+In central India, ASTER and Sentinel-2 were combined with ALOS PALSAR, Landsat-derived PCs, gravity gradients, lab spectra, and known mines to produce a manganese prospect map, showing the value of multi-sensor fusion over imagery alone  (Singh et al., 2023).
+
+In the Malkansu manganese belt, Sentinel-2, Landsat-8, GF-2, ASTER, and DEM data were fused with geology and machine learning; PCA and SAM extracted anomalies including **hydroxyl, chlorite, rhodochrosite, soft manganese, and pyrolusite-related signals** that aligned with faults and known deposits  (Zhao et al., 2025).
+
+For concealed “Datangpo-type” manganese in Guizhou, one study targeted **associated pyrite, chlorite, and secondary manganese oxide** as remote-sensing markers, then used PCA, SVM, and ant-colony optimization to delineate anomalous zones consistent with known deposits  (Xu et al., 2020).
+
+Hyperspectral manganese studies go further by identifying specific Mn minerals. In Pakistan, Hyperion matched sample spectra to **psilomelane** with perfect ACE and likelihood scores and supported mapping of braunite-bearing mineralization, while ASTER handled lithologic discrimination more than direct Mn mineral ID  (Khurram et al., 2025).
+
+- **Landsat** is often used for lineament extraction in Mn belts  (Yang et al., 2024).
+- **ASTER and Sentinel-2** are used for alteration anomalies around Mn mineralization  (Singh et al., 2023; Zhao et al., 2025).
+- **Hyperspectral data** enable mineral-specific Mn matches such as psilomelane  (Khurram et al., 2025).
+
+## Remaining Limits
+
+The main mineralogical information still difficult to obtain from multispectral imagery is **unambiguous, mineral-specific identification**, especially where minerals share broad absorption features or occur in mixed pixels  (Chniouar et al., 2024; El-Omairi & Garouani, 2026).
+
+Multispectral sensors can often separate classes like iron oxides versus hydroxyl-bearing alteration, but they struggle to distinguish **closely related Mn, clay, carbonate, and mixed alteration assemblages** with the specificity achievable from hyperspectral spectra  (Habtemichael et al., 2026; Chniouar et al., 2024; Khurram et al., 2025).
+
+They also remain weak for **blind, buried, or deep mineralization**, because optical EO records surface expressions rather than subsurface ore directly  (Sikakwe, 2023; Van Der Meer et al., 2012; Xu et al., 2020).
+
+Validation remains a bottleneck: spectral libraries vary, natural heterogeneity and spectral mixing distort signatures, and preprocessing is not standardized across studies  (Peyghambari & Zhang, 2021; Wan et al., 2021; El-Omairi & Garouani, 2026).
+
+- **Spectral confusion** limits mineral-group separation in multispectral data  (Chniouar et al., 2024; El-Omairi & Garouani, 2026).
+- **Mixed pixels and spatial resolution** can offset spectral advantages or disadvantages  (Kouzeli et al., 2026; Wan et al., 2021).
+- **Ground truth remains essential** for reliable mineral maps  (Sekandari et al., 2020; Wan et al., 2021; Shirkhani et al., 2025).
+
+Recent work therefore uses Sentinel-2, Landsat, ASTER, SAR, DEMs, and hyperspectral imagery as a **complementary stack**: multispectral data screen structures and alteration efficiently, while hyperspectral data provide the **mineralogical specificity** that multispectral imagery still usually cannot  (Sikakwe, 2023; Hajaj et al., 2024; El-Omairi & Garouani, 2026).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Adiri, Z., Lhissou, R., Harti, E. A., Jellouli, A., & Chakouri, M. (2020). Recent advances in the use of public domain satellite imagery for mineral exploration: A review of Landsat-8 and Sentinel-2 applications. *Ore Geology Reviews, 117*, 103332. https://doi.org/10.1016/j.oregeorev.2020.103332
+ 
+Chniouar, M., Wafik, A., Daafi, Y., & Guglietta, D. (2024). Integrated Remote Sensing for Geological and Mineralogical Mapping of Pb-Zn Deposits: A Case Study of Jbel Bou Dahar Region Using Multi-Sensor Imagery. *Mining*. https://doi.org/10.3390/mining4020018
+ 
+El-Omairi, M. A., & Garouani, E. A. (2026). Satellite based lithological Mapping: A review of Sensors, Methods, and emerging Machine-Learning approaches. *International Journal of Applied Earth Observation and Geoinformation*. https://doi.org/10.1016/j.jag.2026.105309
+ 
+Habtemichael, S. M., Genzebu, W., Ghebremicael, S., & Tesfaldet, Y. T. (2026). A data-driven remote sensing approach for VMS mineralization mapping: Integrating Sentinel-2 imagery with geology data in the Asmara Belt, Eritrea. *PLOS One, 21*. https://doi.org/10.1371/journal.pone.0353934
+ 
+Hajaj, S., Harti, E. A., Pour, A. B., Jellouli, A., Adiri, Z., & Hashim, M. (2024). A review on hyperspectral imagery application for lithological mapping and mineral prospecting: Machine learning techniques and future prospects. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2024.101218
+ 
+Khurram, S., Pour, A. B., Riaz, K., Fatima, A., & Ahmed, A. (2025). ASTER and Hyperion Satellite Remote Sensing Data for Lithological Mapping and Mineral Exploration in Ophiolitic Zones: A Case Study from Lasbela, Baluchistan, Pakistan. *Mining*. https://doi.org/10.3390/mining5030053
+ 
+Kouzeli, E., Pantelidis, I., Nikolakopoulos, K., Tsikos, H., & Sykioti, O. (2026). Integration of Multispectral and Hyperspectral Satellite Imagery for Mineral Mapping of Bauxite Mining Wastes in Amphissa Region, Greece. *Remote Sensing*. https://doi.org/10.3390/rs18020342
+ 
+Mayappan, S. (2019). Mapping of mineral resources and lithological units: a review of remote sensing techniques. *International Journal of Image and Data Fusion, 10*, 79 - 106. https://doi.org/10.1080/19479832.2019.1589585
+ 
+Mohsin, A., Iqbal, J., Khan, J., Khan, A. J., & Michałowska, K. (2025). Spectral Profiles to Minerals Identification: An Integrated Hyperspectral vs Multispectral Minerals Exploration of the Ophiolitic Belt of Qilla Saifullah District, Baluchistan. *International Journal of Innovations in Science and Technology*. https://doi.org/10.33411/ijist/1676
+ 
+Peyghambari, S., & Zhang, Y. (2021). Hyperspectral remote sensing in lithological mapping, mineral exploration, and environmental geology: an updated review. *Journal of Applied Remote Sensing, 15*, 031501 - 031501. https://doi.org/10.1117/1.jrs.15.031501
+ 
+Sekandari, M., Masoumi, I., Pour, A. B., Muslim, A. M., Rahmani, O., Hashim, M., Zoheir, B., Pradhan, B., Misra, A., & Aminpour, S. M. (2020). Application of Landsat-8, Sentinel-2, ASTER and WorldView-3 Spectral Imagery for Exploration of Carbonate-Hosted Pb-Zn Deposits in the Central Iranian Terrane (CIT). *Remote. Sens., 12*, 1239. https://doi.org/10.3390/rs12081239
+ 
+Shirkhani, M., Ghaderi, M., & Rashidnejad‐Omran, N. (2025). Hyperspectral vs. multispectral remote sensing: ASTER and PRISMA performance in mapping IOA deposits in the Bafq mining district, Iran. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2025.106923
+ 
+Sikakwe, G. U. (2023). Mineral exploration employing drones, contemporary geological satellite remote sensing and geographical information system (GIS) procedures: A review. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2023.100988
+ 
+Singh, S., Sarkar, S., Manche, S., Guha, A., & Kumar, K. V. (2023). Earth Observation Approach for Targeting Stratiform Deposit of Manganese in Central India. *Advances in Space Research*. https://doi.org/10.1016/j.asr.2023.03.044
+ 
+Sykioti, O., Ganas, A., Vasilatos, C., & Kypritidou, Z. (2023). Investigating the capability of Sentinel-2 and Worldview-3 VNIR satellite data to detect mineralized zones at an igneous intrusion in the Koutala islet (Lavreotiki, Greece) using laboratory mineralogical analysis, reflectance spectroscopy and spectral indices. *Bulletin of the Geological Society of Greece*. https://doi.org/10.12681/bgsg.31982
+ 
+Van Der Meer, F. D., Van Der Werff, H. V. D., Van Ruitenbeek, F. V., Hecker, C. A., Bakker, W., Noomen, M. F., Van Der Meijde, M., Carranza, E. J. M., De Smeth, J. B., & Woldai, T. (2012). Multi- and hyperspectral geologic remote sensing: A review. *Int. J. Appl. Earth Obs. Geoinformation, 14*, 112-128. https://doi.org/10.1016/j.jag.2011.08.002
+ 
+Wan, Y., Fan, Y.-H., & Jin, M.-S. (2021). Application of hyperspectral remote sensing for supplementary investigation of polymetallic deposits in Huaniushan ore region, northwestern China. *Scientific Reports, 11*. https://doi.org/10.1038/s41598-020-79864-0
+ 
+Xu, K., Yuan, L.-J., Yang, B.-W., Kong, C., Zhang, X.-L., Zheng, J., Zhou, Q., & Wu, C.-L. (2020). Extraction of hidden manganese ore information with combined mining of associated and secondary mineral of remote sensing data in northeast Guizhou. 37-43. https://doi.org/10.19509/j.cnki.dzkq.2020.0405
+ 
+Yang, D., Shao, H., Chang, H., Zhang, R., & Ding, B. (2024). Landsat 8 and ASTER remote sensing data for ore prospecting in the postmasburg manganese ore field, South Africa. *Earth Science Informatics, 18*. https://doi.org/10.1007/s12145-024-01538-6
+ 
+Zhao, J.-H., He, L., Gong, J., He, Z.-W., Feng, Z.-W., Pang, J., Zeng, W., Yan, Y., & Yuan, Y. (2025). Predicting Manganese Mineralization Using Multi-Source Remote Sensing and Machine Learning: A Case Study from the Malkansu Manganese Belt, Western Kunlun. *Minerals*. https://doi.org/10.3390/min15020113
+ 
+
+
+# **Geophysical Derivatives** and Structural Features
+
+Beyond standard vegetation indices, raw elevation, and proximity to known deposits, recent AI-driven prospectivity studies identify prospective zones using **geophysical transform derivatives**, **structural and fractal complexity metrics**, and **knowledge embeddings** with multi-element geochemistry.
+
+Recent machine learning models integrate multi-source evidential layers capturing ore-forming plumbing, structural traps, and geochemical dispersion  (Senanayake et al., 2023; Tang et al., 2025; Ghane et al., 2026). These sophisticated inputs enable models to delineate concealed or blind mineral occurrences across complex terranes  (Senanayake et al., 2023; Ordóñez et al., 2024; Ali et al., 2026).
+
+## Geophysical Transform Derivatives
+
+Processed potential-field and radiometric data reveal subsurface fluid conduits and concealed intrusive architectures beneath cover.
+
+- **Vertical magnetic derivatives** such as the first vertical derivative pinpoint magnetic contrasts driven by fluid flow and mineralization  (Heidari et al., 2026; Ordóñez et al., 2024; Elfadly et al., 2026).
+- **Radiometric element ratios**, particularly thorium-to-potassium, reliably characterize hydrothermal alteration signatures associated with ore-forming intrusions  (Heidari et al., 2026; Ordóñez et al., 2024; Elfadly et al., 2026).
+- **Deep electromagnetic datasets**, including magnetotelluric and airborne EM resistivity grids, constrain deep crustal conduits  (Senanayake et al., 2023).
+
+## Structural and Fractal Metrics
+
+Structural density, directional lineaments, and nonlinear scaling metrics isolate deformation corridors that focus hydrothermal fluids.
+
+| Structural Feature | Analytical Derivation Method | Metallogenic Prospecting Utility | Primary Reference |
+| :--- | :--- | :--- | :--- |
+| **Fault Fractal Dimension** | Box-counting and partition functions ($D_1$, $D_2$) | Captures scale-invariant structural permeability | Sun et al.  (Sun et al., 2024)|
+| **Contact Occurrence Density** | CET grid-analysis of magnetic grids | Highlights structurally complex fluid corridors | Ali et al.  (Ali et al., 2026)|
+| **Polarimetric SAR Lineaments** | Decomposed radar volume backscatter | Resolves subsurface shear trends beneath sand | Hajaj et al.  (Hajaj et al., 2022)|
+| **Structural Orientation Entropy** | Multi-azimuth directional filtering | Identifies intersection nodes of high complexity | Elfadly et al.  (Elfadly et al., 2026)|
+
+**Figure 1:** Comparison of structural and fractal feature engineering metrics for mineral prospectivity
+
+Fractal representations extract subtle, nonlinear structural relationships from raw spatial data, enhancing the discriminatory capacity of predictive models. Multifractal analysis decomposes complex faults into distinct generalized scaling spectra, as illustrated in the windowed partition workflow below. **Figure 2:** Multifractal scaling and generalized dimension spectrum calculation pipeline  (Sun et al., 2024)## Semantic Embeddings and Geochemistry
+
+Recent frameworks translate qualitative mapping knowledge and multielement dispersion paths into high-dimensional numerical inputs for deep neural networks.
+
+- **Knowledge graph embeddings** encode tectonic, lithological, and stratigraphic relationships, constraining prediction areas within favorable shear zones  (Yan et al., 2025; Yan et al., 2024; Sheng et al., 2025).
+- **Buffer distance density** around ductile shear belts and brittle fault contacts provides continuous spatial proximity controls  (He et al., 2024; Hussain et al., 2024; Aisabokhae et al., 2023).
+- **Multielement pathfinder associations**, including polymetallic suites (Au-Ag-As-Sb-Hg and Cu-Mo-Pb-Zn), identify dispersion haloes  (He et al., 2024; Saremi et al., 2026; Lou & Liu, 2025).
+- **Diagnostic alteration composites**, such as pyritization, sericitization, and propylitization ratios, establish discrete hydrothermal footprint vectors  (Tang et al., 2025; Aisabokhae et al., 2023; Elfadly et al., 2026).
+
+Together, these geophysical edge filters, fractal densities, and semantic graph embeddings supply deep learning models with the physical and genetic constraints needed to pinpoint economic mineralization  (Yan et al., 2025; Yan et al., 2024; Elfadly et al., 2026).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Aisabokhae, J., Alimi, S., Adeoye, M., & Oresajo, B. (2023). Geological structure and hydrothermal alteration mapping for mineral deposit prospectivity using airborne geomagnetic and multispectral data in Zuru Province, northwestern Nigeria. *The Egyptian Journal of Remote Sensing and Space Science*. https://doi.org/10.1016/j.ejrs.2023.02.005
+ 
+Ali, H. F., Wang, C.-C., Abanumay, F. A., & Ghoneim, S. M. (2026). Integrated Multisource Radar and Geophysical Data for Depth-Resolved Structural Analysis and Mineral Prospectivity: DEM, NISAR, BIOMASS, and Aeromagnetic Data. *Minerals*. https://doi.org/10.3390/min16090939
+ 
+Elfadly, M. A., Abdelrady, M., Decarlis, A., Khudeir, A., El-Rus, M. A., Abbas, H., Ibraheem, I. M., & Shebl, A. (2026). Multidisciplinary approaches to lithological discrimination and structural mapping for mineral resource assessment. *Scientific Reports, 16*. https://doi.org/10.1038/s41598-026-43824-x
+ 
+Ghane, B., Lentz, D. R., & Thorne, K. (2026). Deep autoencoder-guided machine learning for prospectivity mapping of intrusion-related Cu-Au mineral systems in southwestern New Brunswick, Canada. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2026.107250
+ 
+Hajaj, S., Harti, E. A., & Jellouli, A. (2022). Assessment of hyperspectral, multispectral, radar, and digital elevation model data in structural lineaments mapping: A case study from Ameln valley shear zone, Western Anti-Atlas Morocco. *Remote Sensing Applications: Society and Environment*. https://doi.org/10.1016/j.rsase.2022.100819
+ 
+He, H.-J., Zhu, H., Yang, X., Zhang, W., & Wang, J. (2024). Mineral prospectivity prediction based on convolutional neural network and ensemble learning. *Scientific Reports, 14*. https://doi.org/10.1038/s41598-024-73357-0
+ 
+Heidari, E., Farahbakhsh, E., Shirmard, H., Kohlmann, F., Blevin, P., & Müller, R. (2026). Machine learning framework for prospectivity mapping of Cu–Au porphyry mineralisation in the Lachlan Fold Belt, eastern Australia. *Journal of Asian Earth Sciences*. https://doi.org/10.1016/j.jseaes.2026.107018
+ 
+Hussain, M., Li, H., Beshr, A. M., & Memon, F. A. (2024). Remote sensing-based structural and lithological mapping for prospecting polymetallic mineralization at Xiaoshan region, China. *Earth Science Informatics, 18*. https://doi.org/10.1007/s12145-024-01614-x
+ 
+Lou, Y., & Liu, Y. (2025). Mineral Prospectivity Mapping Based on a Novel Self-Ensembling Graph Convolutional Network. *Mathematical Geosciences, 57*, 629 - 656. https://doi.org/10.1007/s11004-024-10170-5
+ 
+Ordóñez, C., Ekwok, S. E., Alkhayaat, A., Bains, P. S., Sharma, R., Kumar, R., Kulshreshta, A., Mann, V. S., & Elmasry, Y. (2024). Delineation of mineralization-related geologic structures and lithological units using airborne magnetic and radiometric data. *Geomechanics and Geophysics for Geo-Energy and Geo-Resources, 10*. https://doi.org/10.1007/s40948-024-00902-6
+ 
+Saremi, M., Hoseinzade, Z., Shirazy, A., Shirazi, A., & Pour, A. B. (2026). Unsupervised Autoencoder-Based Feature Ranking and Anomaly Detection for Porphyry Copper Prospectivity Mapping from Multi-Source Geospatial Datasets. *Minerals*. https://doi.org/10.3390/min16060660
+ 
+Senanayake, I. P., Kiem, A., Hancock, G., Metelka, V., Folkes, C., Blevin, P., & Budd, A. (2023). A Spatial Data-Driven Approach for Mineral Prospectivity Mapping. *Remote. Sens., 15*, 4074. https://doi.org/10.3390/rs15164074
+ 
+Sheng, S., Wang, Y.-Z., Tian, J., Chen, X., Ning, Y., & Dong, Y.-H. (2025). Graph attention network-based mineral prospectivity prediction: A case study of copper exploration in eastern Tien Shan, China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2025.106766
+ 
+Sun, T., Feng, M., Pu, W., Liu, Y., Chen, F., Zhang, H., Huang, J., Mao, L., & Wang, Z. (2024). Fractal-Based Multi-Criteria Feature Selection to Enhance Predictive Capability of AI-Driven Mineral Prospectivity Mapping. *Fractal and Fractional*. https://doi.org/10.3390/fractalfract8040224
+ 
+Tang, J., Zhang, H., Bai, R., Zhang, J., & Sun, T. (2025). Mineral Prospectivity Mapping for Exploration Targeting of Porphyry Cu-Polymetallic Deposits Based on Machine Learning Algorithms, Remote Sensing and Multi-Source Geo-Information. *Minerals*. https://doi.org/10.3390/min15101050
+ 
+Yan, Q., Xue, L.-F., Li, Y., Wang, R., Ding, K., & Xu, Z. (2025). Mineral prospectivity mapping using geological map semantic knowledge graph embedding: a case study of gold prospecting in Ankang, Shaanxi Province, China. *International Journal of Digital Earth, 18*. https://doi.org/10.1080/17538947.2025.2517827
+ 
+Yan, Q., Zhao, J., Xue, L.-F., Wei, L.-Q., Ji, M., Ran, X.-J., & Dai, J.-H. (2024). Mineral Prospectivity Mapping Based on Spatial Feature Classification with Geological Map Knowledge Graph Embedding: Case Study of Gold Ore Prediction at Wulonggou, Qinghai Province (Western China). *Natural Resources Research, 33*, 2385 - 2406. https://doi.org/10.1007/s11053-024-10386-6
+ 
+
+# **Uncertainty Quantification** and Explainable AI
+
+Recent research decomposes mineral prospectivity into uncertainty estimation methods, explainable artificial intelligence (XAI) frameworks, and decision-support improvements over static prospectivity rankings  (Zhang et al., 2024; Mou et al., 2023; Nagasingha et al., 2025).
+
+
+**Figure 1:** Consensus on uncertainty-aware maps improving mineral exploration decision-making
+
+The literature strongly agrees that uncertainty-aware prospectivity mapping mitigates exploration risk and improves spatial selectivity relative to deterministic rankings  (Yang et al., 2022; Wang & Zuo, 2026; Nagasingha et al., 2025).
+
+## Uncertainty Quantification Methods
+
+Uncertainty in data-driven prospectivity modeling arises from noisy or sparse geospatial datasets (aleatoric uncertainty), model and algorithmic design choices (epistemic uncertainty), and broader data science workflow configurations  (Zhang et al., 2024). Recent frameworks model these variations using ensemble bootstrapping, stochastic simulation of evidence layers, and Bayesian deep learning  (Mou et al., 2023; Yang et al., 2022; Wang & Zuo, 2026). Direct sampling algorithms simulate equiprobable evidence layers to evaluate input data sensitivity, while conditional variational autoencoders (CVAEs) derive aleatoric spreads from posterior distributions and epistemic variations from multi-realization predictive runs  (Yang et al., 2022; Nagasingha et al., 2025).
+
+- **Bayesian deep learning** separates predictive uncertainty into aleatoric and epistemic components using Metropolis–Hastings sampling or variational inference over neural network weights  (Liu, 2025).
+- **Ensemble resampling** and Monte Carlo dropout quantify parameter variability and model sensitivity across repeated predictive runs  (Ghane et al., 2026; Wang & Zuo, 2026).
+- **Direct sampling simulation** models data uncertainty originating from low spatial resolution and subjective interpretations of evidence maps  (Yang et al., 2022; Wang & Zuo, 2026).
+
+## Explainable AI Frameworks
+
+Black-box predictions often lack credibility among exploration geoscientists because spatial associations cannot be easily reconciled with metallogenic processes  (Mou et al., 2023; Zuo et al., 2024; Yin et al., 2024). Modern prospectivity studies implement model-agnostic attribution algorithms and domain knowledge embeddings to explain predictions  (Mou et al., 2023; Zuo et al., 2024). Shapley Additive Explanations (SHAP) and Local Interpretable Model-agnostic Explanations (LIME) quantify global and local feature contributions, determining whether deep neural networks or ensemble classifiers rely on genuine ore controls such as fault dilation tendency, intrusive boundaries, and hydrothermal alteration  (Yu et al., 2024; Saduov et al., 2026; Yin et al., 2024). 
+
+Multi-model agreement can also be evaluated spatially by combining diverse algorithms into consensus distributions, illustrating regional stability and entropy across model structures  (Daviran et al., 2022; Yousefi et al., 2024). **Figure 2:** Spatial entropy model illustrating predictive disagreement across multiple prospectivity algorithms  (Yousefi et al., 2024)- **Shapley Additive Explanations** rank the relative influence of multi-source predictors and verify geological associations across predictive surfaces  (Ghane et al., 2026; Saduov et al., 2026; Wang et al., 2024).
+- **Partial dependence plots** and individual conditional expectation plots trace marginal feature responses to establish physical consistency with deposit models  (Mou et al., 2023; Yin et al., 2024).
+- **Domain knowledge embeddings** guide model training from input data structuring to loss formulations, enhancing interpretability and generalizability  (Zuo et al., 2024; Yin et al., 2024).
+
+## Decision Support Beyond Ternary Maps
+
+Deterministic high/medium/low prospectivity maps typically delineate broad prospective areas that are biased toward well-known deposits while concealing severe underlying prediction errors  (Mou et al., 2023; Wang & Zuo, 2026; Lauzon & Gloaguen, 2024). Decoupling prospectivity value from confidence enables exploration teams to distinguish robust, drill-ready targets from permissive tracts requiring further baseline sampling  (Liu, 2025; Wang & Zuo, 2026; Yousefi et al., 2024).
+
+| Analytical Dimension | Deterministic Prospectivity | Uncertainty-Aware Decision Mapping | Citations |
+| :--- | :--- | :--- | :--- |
+| **Search Space Reduction** | Yields expansive, overconfident target zones | Narrows drilling tracts to ~3–5% of the total area |  (Mou et al., 2023; Daviran et al., 2022)|
+| **Model Calibration** | Uses uncalibrated classification probabilities | Employs isotonic regression to minimize Brier scores |  (Saduov et al., 2026)|
+| **Domain Validity** | Extrapolates into untested feature domains | Masks predictions outside the Area of Applicability |  (Saduov et al., 2026)|
+| **Portfolio Allocation** | Merges diverse risk regimes into single scores | Applies Markowitz and Getis–Ord risk-return categorizations |  (Yang et al., 2022; Nagasingha et al., 2025)|
+
+**Figure 3:** Comparison of deterministic classifications against uncertainty-aware decision mapping frameworks
+
+Ensemble-modulated modeling coupled with accuracy–rejection curves establishes quantitative uncertainty thresholds for target selection  (Zhang et al., 2024; Mou et al., 2023). By integrating probability surfaces with confidence indices and majority voting, exploration managers can prioritize low-risk tracts that capture over 80% to 94% of known deposits while identifying high-uncertainty zones that warrant secondary geophysical surveys rather than immediate drilling  (Wang & Zuo, 2026; Nagasingha et al., 2025; Yousefi et al., 2024).
+
+Uncertainty-aware and explainable AI transforms mineral prospectivity mapping from opaque classification into transparent risk-return optimization  (Wang & Zuo, 2026; Zuo et al., 2024; Nagasingha et al., 2025).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Daviran, M., Parsa, M., Maghsoudi, A., & Ghezelbash, R. (2022). Quantifying Uncertainties Linked to the Diversity of Mathematical Frameworks in Knowledge-Driven Mineral Prospectivity Mapping. *Natural Resources Research, 31*, 2271 - 2287. https://doi.org/10.1007/s11053-022-10089-w
+ 
+Ghane, B., Lentz, D. R., & Thorne, K. (2026). Deep autoencoder-guided machine learning for prospectivity mapping of intrusion-related Cu-Au mineral systems in southwestern New Brunswick, Canada. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2026.107250
+ 
+Lauzon, D., & Gloaguen, E. (2024). Quantifying uncertainty and improving prospectivity mapping in mineral belts using transfer learning and Random Forest: A case study of copper mineralization in the Superior Craton Province, Quebec, Canada. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2024.105918
+ 
+Liu, Y. (2025). Quantifying uncertainty of mineral prediction using a novel Bayesian deep learning framework. *Artificial Intelligence in Geosciences*. https://doi.org/10.1016/j.aiig.2025.100164
+ 
+Mou, N.-N., Carranza, E. J. M., Wang, G.-W., & Sun, X. (2023). A Framework for Data-Driven Mineral Prospectivity Mapping with Interpretable Machine Learning and Modulated Predictive Modeling. *Natural Resources Research, 32*, 2439 - 2462. https://doi.org/10.1007/s11053-023-10272-7
+ 
+Nagasingha, L., Bérubé, C. L., & Ghanati, R. (2025). A generative neural network approach to uncertainty and risk-return analysis in mineral prospectivity modelling. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2025.106844
+ 
+Saduov, A., Zholtayev, G., Togizov, K., Umarbekova, Z., Zhumabay, N., & Amangeldi, N. (2026). AOA-Constrained, Calibrated Random-Forest Prospectivity Mapping for Au-Ag in Nevada Great Basin: Spatially Independent Validation, Uncertainty, and Decision-Focused Top-k Targets. *Minerals*. https://doi.org/10.3390/min16090886
+ 
+Wang, Z.-Y., & Zuo, R. (2026). Uncertainty quantification of deep learning algorithms for mineral prospectivity mapping. *Geoscientific Model Development*. https://doi.org/10.5194/gmd-19-8755-2026
+ 
+Wang, L.-Q., Yang, J., Wu, S., Hu, L., Ge, Y., & Du, Z. (2024). Enhancing mineral prospectivity mapping with geospatial artificial intelligence: A geographically neural network-weighted logistic regression approach. *Int. J. Appl. Earth Obs. Geoinformation, 128*, 103746. https://doi.org/10.1016/j.jag.2024.103746
+ 
+Yang, F.-F., Wang, Z., Zuo, R., Sun, S., & Zhou, B. (2022). Quantification of Uncertainty Associated with Evidence Layers in Mineral Prospectivity Mapping Using Direct Sampling and Convolutional Neural Network. *Natural Resources Research, 32*, 79-98. https://doi.org/10.1007/s11053-022-10144-6
+ 
+Yin, S., Li, N., Xiao, K.-Y., Song, X., Yin, J., & Wang, C.-H. (2024). Mineral prospectivity mapping using knowledge embedding and explainable ensemble learning: A case study of the Keeryin ore concentration in Sichuan, China. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2024.106017
+ 
+Yousefi, M., Lindsay, M. D., & Kreuzer, O. P. (2024). Mitigating uncertainties in mineral exploration targeting: Majority voting and confidence index approaches in the context of an exploration information system (EIS). *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2024.105930
+ 
+Yu, Z., Li, B.-B., & Wang, X. (2024). Mineral prospectivity mapping susceptibility evaluation based on interpretable ensemble learning. *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2024.106248
+ 
+Zhang, Z., Wang, G.-W., Carranza, E. J. M., Du, J.-G., Li, Y., Liu, X., & Su, Y. (2024). An Uncertainty-Quantification Machine Learning Framework for Data-Driven Three-Dimensional Mineral Prospectivity Mapping. *Natural Resources Research, 33*, 1393 - 1411. https://doi.org/10.1007/s11053-024-10349-x
+ 
+Zhang, S. E., Lawley, C. J. M., Bourdeau, J., Nwaila, G., & Ghorbani, Y. (2024). Workflow-Induced Uncertainty in Data-Driven Mineral Prospectivity Mapping. *Natural Resources Research, 33*, 995 - 1023. https://doi.org/10.1007/s11053-024-10322-8
+ 
+Zuo, R., Cheng, Q., Xu, Y., Yang, F.-F., Xiong, Y.-H., Wang, Z.-Y., & Kreuzer, O. P. (2024). Explainable artificial intelligence models for mineral prospectivity mapping. *Science China Earth Sciences, 67*, 2864 - 2875. https://doi.org/10.1007/s11430-024-1309-9
+ 
+
+
+# **Machine Learning** Predicts Mining Shortfalls
+
+Recent research on predicting mining production shortfalls addresses three core dimensions: **machine learning predictive architectures**, **operational constraint integration**, and **systemic model limitations**.
+
+Modern operations predict production disruptions by analyzing multi-source telematics, meteorological events, and mechanical failure histories  (Guérin et al., 2025; Martins & Soofastaei, 2020). These predictive frameworks increasingly replace traditional static driver trees to optimize short-term planning under stochastic industrial conditions  (Guérin et al., 2025; Liu et al., 2024).
+
+## Machine Learning Predictive Architectures
+
+Recent predictive workflows deploy ensembles and deep neural networks to forecast fleet capacity, crusher throughput, and delay events using real-time dispatch telematics  (Guérin et al., 2025; Kumah et al., 2024; Baek & Choi, 2020). Supervised regressors map nonlinear degradation signals and mechanical cycles directly to hourly tonnage outputs  (George & Nojabaei, 2023; Kumah et al., 2024; Yang et al., 2025; Rahmah et al., 2024).
+
+- **Deep neural networks** forecast open-pit haulage production with mean absolute percentage errors between 4.23% and 11.40% across operational shifts  (George & Nojabaei, 2023; Kumah et al., 2024; Baek & Choi, 2020).
+- **Tree-based gradient boosting** algorithms, including XGBoost and CatBoost, achieve high accuracy (up to 85–95% $R^2$) predicting hauling capacity and stope output  (George & Nojabaei, 2023; Yang et al., 2025; Nobahar & Pourrahimian, 2022; Rahmah et al., 2024).
+- **Two-stage classification-forecasting** pipelines resolve zero-production days in intermittent extraction by combining Random Forest classifiers with recurrent networks like Bi-LSTM  (Rahmah et al., 2024).
+
+## Operational Constraint Integration
+
+Forecasting models incorporate external weather, maintenance scheduling, and blast cycles into dynamic dispatch and capacity models  (Guérin et al., 2025; Yang et al., 2025; Nobahar & Pourrahimian, 2022). Machine learning models trace dependencies across environmental factors and equipment wear to mitigate throughput deficits  (Guérin et al., 2025; George & Nojabaei, 2023; Elmouttie et al., 2021; Mulyono, 2026). The relationship between multi-variable telemetry and loading performance can be quantified to identify optimal cycle dynamics. **Figure 1:** Correlation coefficient heat map across loader performance and operational variables  (George & Nojabaei, 2023)- **Precipitation and weather** variables directly reduce haulage capacity, with heavy rainfall historically driving up to 10% in annual production losses  (Guérin et al., 2025; George & Nojabaei, 2023; Rahmah et al., 2024).
+- **Condition-based predictive maintenance** using fluid chemistry and component telemetry prevents catastrophic downtime, achieving up to 98% diagnostic accuracy  (Alvars et al., 2026; Madahana et al., 2024).
+- **Dynamic scheduling models** reschedule unexecuted production tasks following sudden breakdowns, cutting shovel relocation production loss by 54%  (Tu et al., 2023; Both & Dimitrakopoulos, 2020).
+
+## Systemic Model Limitations
+
+Despite strong benchmark accuracy, machine learning approaches face substantial practical limitations in capturing end-to-end mining environments  (Yang et al., 2025; Both & Dimitrakopoulos, 2020; Alvars et al., 2026; Mulyono, 2026). Disjointed operational data silos, class imbalance in component failure logs, and unmodeled human factors persistently degrade predictive reliability on site  (Guérin et al., 2025; Kannan et al., 2022; Elmouttie et al., 2021; Alvars et al., 2026).
+
+- **Non-repair downtime delays**, such as workshop transit and diagnostic waiting, constitute up to 50% of total outage duration but are routinely omitted from models  (Dashtaki et al., 2025).
+- **Geotechnical and blasting** variables remain severely underrepresented in fleet models, despite their verified influence on dozer efficiency and wall scaling  (Guérin et al., 2025; Elmouttie et al., 2021).
+- **Data fragmentation** across legacy databases and absence of streaming IoT sensors restrict real-time remaining useful life estimation  (Kannan et al., 2022; Elmouttie et al., 2021; Mulyono, 2026; Rahimdel & Mohammadpour, 2025).
+
+Integrating hybrid deep learning with real-time maintenance telemetry substantially improves shortfall foresight, yet widespread industrial adoption requires unifying geotechnical, blasting, and human constraints into automated decision systems  (Guérin et al., 2025; Elmouttie et al., 2021; Mulyono, 2026).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Alvars, O. A., Afraei, S., & Ataee-Pour, M. (2026). Comparative analysis of support vector machines, artificial neural network, random forest and gradient boosting for predictive maintenance in mining machinery and equipment: a case study of Chadormalu Iron Ore Mine. *Scientific Reports, 16*. https://doi.org/10.1038/s41598-026-55052-4
+ 
+Baek, J., & Choi, Y. (2020). Deep Neural Network for Predicting Ore Production by Truck-Haulage Systems in Open-Pit Mines. *Applied Sciences*. https://doi.org/10.3390/app10051657
+ 
+Both, C., & Dimitrakopoulos, R. (2020). Joint stochastic short-term production scheduling and fleet management optimization for mining complexes. *Optimization and Engineering, 21*, 1717-1743. https://doi.org/10.1007/s11081-020-09495-x
+ 
+Dashtaki, M., Jafari, A., & Hoseinie, S. H. (2025). Development of a new method for maintainability and downtime analysis of mining machinery. *Scientific Reports, 15*. https://doi.org/10.1038/s41598-025-88505-3
+ 
+Elmouttie, M., Hodgkinson, J., & Dean, P. K. (2021). Prediction of Mining Conditions in Geotechnically Complex Sites. *Mining*. https://doi.org/10.3390/mining1030018
+ 
+George, B., & Nojabaei, B. (2023). Data Analyses of Quarry Operations and Maintenance Schedules: A Production Optimization Study. *Mining*. https://doi.org/10.3390/mining3020021
+ 
+Guérin, N., Nakhla, M., Dehoux, A., & Loyer, J. (2025). Deep learning for predicting hauling fleet production capacity under uncertainties in open pit mines using real and simulated data. *ArXiv, abs/2506.04296*. https://doi.org/10.48550/arxiv.2506.04296
+ 
+Kannan, R., Halim, H. A. A., Ramakrishnan, K., Ismail, S., & Wijaya, D. R. (2022). Machine learning approach for predicting production delays: a quarry company case study. *Journal of Big Data, 9*. https://doi.org/10.1186/s40537-022-00644-w
+ 
+Kumah, F. N., Saim, A. K., Oppong, M. N., & Arthur, C. K. (2024). Predicting open-pit mine production using machine learning techniques. *Journal of Sustainable Mining*. https://doi.org/10.46873/2300-3960.1411
+ 
+Liu, S., Liu, L., Kozan, E., Corry, P., Masoud, M., Chung, S.-H., & Li, X. (2024). Machine learning for open-pit mining: a systematic review. *International Journal of Mining, Reclamation and Environment, 39*, 1 - 39. https://doi.org/10.1080/17480930.2024.2362579
+ 
+Madahana, M. C. I., Seopana, K., & Ekoru, J. E. D. (2024). Predictive Maintenance of Mining Haul Trucks Via Machine Learning. *2024 6th International Conference on Robotics and Computer Vision (ICRCV)*, 364-368. https://doi.org/10.1109/icrcv62709.2024.10758576
+ 
+Martins, P., & Soofastaei, A. (2020). Predictive Maintenance of Mining Machines Applying Advanced Data Analysis. 149-168. https://doi.org/10.1201/9780429433368-7
+ 
+Mulyono, N. B. (2026). Forecast-Based Decision Framework for Replacement of Ros and Onboard Components in Autonomous Loaders: A Case Study at GBC Mine PT Freeport Indonesia. *Eduvest - Journal of Universal Studies*. https://doi.org/10.59188/eduvest.v6i6.53095
+ 
+Nobahar, P., & Pourrahimian, Y. (2022). Optimum Fleet Selection Using Machine Learning Algorithms—Case Study: Zenouz Kaolin Mine. *Mining*. https://doi.org/10.3390/mining2030028
+ 
+Rahimdel, M. J., & Mohammadpour, R. (2025). Enhancing mineral transportation systems in underground mines: A framework for capacity analysis. *Heliyon, 11*. https://doi.org/10.1016/j.heliyon.2025.e42708
+ 
+Rahmah, N. D. A., Handoko, B., & Pravitasari, A. A. (2024). Machine Learning Methods for Forecasting Intermittent Tin Ore Production. *Jurnal RESTI (Rekayasa Sistem dan Teknologi Informasi)*. https://doi.org/10.29207/resti.v8i5.5990
+ 
+Tu, S., Jia, M.-T., Wang, L.-G., Feng, S., & Huang, S. (2023). A Dynamic Scheduling Model for Underground Metal Mines under Equipment Failure Conditions. *Sustainability*. https://doi.org/10.3390/su15097306
+ 
+Yang, C., Zhou, K., & Li, J.-L. (2025). Analysis of Weak Links in the Mechanized Mining of Underground Metal Mines: Insights from Machine Learning and SHAP Explainability Models. *Applied Sciences*. https://doi.org/10.3390/app15137391
+ 
+
+
+# **No unified AI system** integrates exploration and operations
+
+
+**Figure 1:** Scientific consensus on the complete integration of exploration and operational mining AI systems
+
+Current research confirms that while isolated sub-systems link geological grade uncertainty to scheduling or haulage telematics to weather, no single decision-support system bridges macro-scale mineral prospectivity mapping with granular short-term mine operations  (Rahimi, 2025; Chimunhu et al., 2024). This disconnect decomposes into three distinct facets: existing partial integrations, operational domain silos, and persistent architectural gaps.
+
+## Partial AI Integrations
+
+Recent decision-support systems link downstream geological uncertainty with dynamic extraction sequences and haulage simulation rather than regional prospectivity maps  (Rahimi, 2025; Both & Dimitrakopoulos, 2020; Kumar et al., 2020). Variational autoencoders generate probabilistic grade realizations that feed metaheuristic optimizers to evaluate schedules under spatial uncertainty  (Rahimi, 2025). Haulage frameworks combine telemetry with meteorological records and mechanical breakdown simulations to forecast production capacity  (Guérin et al., 2025).
+
+- Continuous updating engines combine extended Kalman filtering and reinforcement learning to adapt short-term material routing dynamically  (Kumar et al., 2020).
+- Stochastic integer formulations optimize extraction sequences and truck fleets jointly, reducing shovel relocation losses by 54%  (Both & Dimitrakopoulos, 2020).
+- Geometallurgical frameworks integrate machine learning with geostatistics to adapt processing plant circuits under complex deposit variability  (Medina-Tasilla et al., 2024).
+
+A technical workflow demonstrates how deep-learning scenario generation couples directly with parallelized optimization engines to resolve mine planning bottlenecks. **Figure 2:** Interaction flow and optimization architecture within an AI-enhanced mine decision support system  (Rahimi, 2025)## Operational Domain Silos
+
+Predictive modeling for exploration prospectivity operates entirely separated from day-to-day operations and asset maintenance  (Katiyar et al., 2024; Chimunhu et al., 2024). Prospectivity systems focus strictly on macro-scale targeting using remote sensing, geophysics, and geochemical footprints without linking to operational logistics  (Yousefi et al., 2024; Tang et al., 2025; Senanayake et al., 2023; Echogdali et al., 2021). Concurrently, operational tools focus narrowly on fleet dispatching, equipment degradation, or worker ergonomics without incorporating upstream geological models  (Chimunhu et al., 2024; Choi et al., 2020; Misita et al., 2024; Rojas et al., 2025).
+
+- Upstream prospectivity models stop at target delineation and drill-hole targeting rather than operational risk estimation  (Katiyar et al., 2024; Karbalaeiramezanali et al., 2025).
+- Haulage forecasting tools neglect upstream blasting parameters, pit-wall stability reports, and geotechnical constraints  (Guérin et al., 2025; Chimunhu et al., 2024).
+- Equipment predictive maintenance systems optimize component changeouts in isolation from short-term production targets  (Chimunhu et al., 2024; Rojas et al., 2025).
+
+## Evidence Coverage Across Exploration and Operations
+
+| | Mineral Systems AI | Stochastic Scheduling | Dynamic Dispatch | Predictive Maintenance |
+|---|---|---|---|---|
+| Regional Prospectivity |  |  |  |  |
+| Grade Block Modeling |  |  |  |  |
+| Fleet Telematics & Weather |  |  |  |  |
+| Asset Health Monitoring |  |  |  |  |
+**Figure 3:** Cross-domain coverage matrix of mining AI architectures against operational life-cycle domains
+
+The matrix highlights a structural gap across the mining life cycle: AI methods excel within isolated functional domains but rarely bridge the spatial and temporal divides separating regional exploration from short-term operations  (Rahimi, 2025; Chimunhu et al., 2024; Rojas et al., 2025). Prospectivity methods operate over kilometer-scale rasters to generate static target probabilities  (Yousefi et al., 2024; Sun et al., 2020; Nwaila et al., 2024), whereas operational systems govern shift-level material flows, fleet dispatching, and equipment wear  (Navarro Torres et al., 2020; Guérin et al., 2025; Rojas et al., 2025). This persistence stems from incompatible data structures, fragmented enterprise databases, and differing mathematical formulations across organizational units  (Rahimi, 2025; Avane et al., 2026; Chimunhu et al., 2024; Rojas et al., 2025). Consequently, mining platforms remain partitioned between exploration reconnaissance and tactical production scheduling  (Rahimi, 2025; Chimunhu et al., 2024; Savolainen et al., 2022; Rojas et al., 2025).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Avane, S., Aghdamigargari, M., Anani, A., & Adewuyi, S. (2026). Holistic insights into uncertainty-based modeling approaches for open pit mine planning. *International Journal of Mining, Reclamation and Environment, 40*, 639 - 664. https://doi.org/10.1080/17480930.2025.2603319
+ 
+Both, C., & Dimitrakopoulos, R. (2020). Joint stochastic short-term production scheduling and fleet management optimization for mining complexes. *Optimization and Engineering, 21*, 1717-1743. https://doi.org/10.1007/s11081-020-09495-x
+ 
+Chimunhu, P., Topal, E., Asad, M. W. A., Faradonbeh, R. S., & Ajak, A. (2024). The future of underground mine planning in the era of machine learning: Opportunities for engineering robustness and flexibility. *Mining Technology, 133*, 331 - 347. https://doi.org/10.1177/25726668241281875
+ 
+Choi, Y., Baek, J., & Park, S. (2020). Review of GIS-Based Applications for Mining: Planning, Operation, and Environmental Management. *Applied Sciences*. https://doi.org/10.3390/app10072266
+ 
+Echogdali, F. Z., Boutaleb, S., Abia, E., Ouchchen, M., Dadi, B., Id-Belqas, M., Abioui, M., Phạm, L., Abu-Alam, T., & Mickus, K. (2021). Mineral prospectivity mapping: a potential technique for sustainable mineral exploration and mining activities – a case study using the copper deposits of the Tagmout basin, Morocco. *Geocarto International, 37*, 9110 - 9131. https://doi.org/10.1080/10106049.2021.2017006
+ 
+Guérin, N., Nakhla, M., Dehoux, A., & Loyer, J. (2025). Deep learning for predicting hauling fleet production capacity under uncertainties in open pit mines using real and simulated data. *ArXiv, abs/2506.04296*. https://doi.org/10.48550/arxiv.2506.04296
+ 
+Karbalaeiramezanali, A., Parsa, M., Lentz, D., & Thorne, K. (2025). Prospectivity Modeling of Devonian Intrusion-Related W–Mo–Sb–Au Deposits in the Pokiok Plutonic Suite, West-Central New Brunswick, Canada, Using a Monte Carlo-Based Framework. *Natural Resources Research, 34*, 669 - 702. https://doi.org/10.1007/s11053-024-10437-y
+ 
+Katiyar, N., Kulshreshtha, A., & Singh, P. (2024). A Review of Integration Techniques of Multi-Geoscience Data-Sets in Mineral Prospectivity Mapping. *Earth Sciences*. https://doi.org/10.11648/j.earth.20241304.12
+ 
+Kumar, A., Dimitrakopoulos, R., & Maulen, M. (2020). Adaptive self-learning mechanisms for updating short-term production decisions in an industrial mining complex. *Journal of Intelligent Manufacturing, 31*, 1795-1811. https://doi.org/10.1007/s10845-020-01562-5
+ 
+Medina-Tasilla, D. Y., Jacobo-Barreto, W. J., Mendoza-Cuti, A. O., Pinto-Huisacayna, K. L., Torres-Guerra, J. A., Soto-Juscamayta, L. M., & Romero-Baylón, A. A. (2024). Optimizing Mineral Extraction in Peru: Integrating Geometallurgical Planning with Mining 4.0 Technologies. *International Journal of Design & Nature and Ecodynamics*. https://doi.org/10.18280/ijdne.190438
+ 
+Misita, M., Brkić, A., Mihajlović, I., Đurić, G., Stanojević, N., & Bugarić, U. (2024). Decision Support System for Mining Machinery Risk Mitigation Driven by Ergonomics and Contextual Theory. *Applied Sciences*. https://doi.org/10.3390/app14156413
+ 
+Navarro Torres, V. F., Mateus, G., Martins, A. G., Carneiro, W., & Chaves, L. (2020). Integrated optimization and simulation models for short-term open-pit mine planning. *Journal of the Southern African Institute of Mining and Metallurgy*. https://doi.org/10.17159/2411-9717/1266/2020
+ 
+Nwaila, G., Zhang, S. E., Bourdeau, J., Carranza, E. J. M., Enslin, S., Manzi, M., Andriampenomanana, F., & Ghorbani, Y. (2024). Mineral Reconnaissance Through Scientific Consensus: First National Prospectivity Maps for PGE–Ni–Cu–Cr and Witwatersrand-type Au Deposits in South Africa. *Natural Resources Research, 33*, 2357 - 2384. https://doi.org/10.1007/s11053-024-10390-w
+ 
+Rahimi, I. (2025). Deep Learning Decision Support System for Open-Pit Mining Optimisation: GPU-Accelerated Planning Under Geological Uncertainty. *ArXiv, abs/2511.18296*. https://doi.org/10.48550/arxiv.2511.18296
+ 
+Rojas, L., Peña, Á., & García, J. (2025). AI-Driven Predictive Maintenance in Mining: A Systematic Literature Review on Fault Detection, Digital Twins, and Intelligent Asset Management. *Applied Sciences*. https://doi.org/10.3390/app15063337
+ 
+Savolainen, J., Rakhsha, R., & Durham, R. (2022). Simulation-based decision-making system for optimal mine production plan selection. *Mineral Economics, 35*, 267 - 281. https://doi.org/10.1007/s13563-021-00297-w
+ 
+Senanayake, I. P., Kiem, A., Hancock, G., Metelka, V., Folkes, C., Blevin, P., & Budd, A. (2023). A Spatial Data-Driven Approach for Mineral Prospectivity Mapping. *Remote. Sens., 15*, 4074. https://doi.org/10.3390/rs15164074
+ 
+Sun, T., Wu, K.-X., Chen, F., Zhu, Z., & Hu, Z. (2020). Data-Driven Predictive Modelling of Mineral Prospectivity Using Machine Learning and Deep Learning Methods: A Case Study from Southern Jiangxi Province, China. *Minerals*. https://doi.org/10.3390/min10020102
+ 
+Tang, J., Zhang, H., Bai, R., Zhang, J., & Sun, T. (2025). Mineral Prospectivity Mapping for Exploration Targeting of Porphyry Cu-Polymetallic Deposits Based on Machine Learning Algorithms, Remote Sensing and Multi-Source Geo-Information. *Minerals*. https://doi.org/10.3390/min15101050
+ 
+Yousefi, M., Lindsay, M. D., & Kreuzer, O. P. (2024). Mitigating uncertainties in mineral exploration targeting: Majority voting and confidence index approaches in the context of an exploration information system (EIS). *Ore Geology Reviews*. https://doi.org/10.1016/j.oregeorev.2024.105930
+ 
+
+# **Simulation and Reinforcement Learning** Drive Mining Operations
+
+Modern mining operations implement digital twins, reinforcement learning, and simulation across three distinct facets: **dynamic production scheduling and equipment allocation**, **drill-and-blast optimization**, and **lightweight prototype frameworks for shortfall prevention**.
+
+The execution architecture links physical sensor telemetry to a simulation environment where algorithmic agents evaluate disruption scenarios before deployment  (Seipolt et al., 2024; Yan et al., 2022; Noriega & Pourrahimian, 2024; Perincek et al., 2025).
+
+<mermaid_diagram chart="flowchart LR; A[Mine Telemetry] --> B[Digital Twin]; B --> C{Simulation Optimization}; C -->|Deep Q-Learning| D[Dynamic Dispatch]; C -->|Mixed Integer Program| E[Drill and Blast]; D --> F[Shortfall Mitigation]; E --> F" title="Simulation-Optimization Architecture" descriptions='@@json@@:{"Mine Telemetry":"Streams real-time physical sensor data, vehicle tracking, and environmental monitoring","Digital Twin":"Synchronizes virtual twin models with actual mine states via data feeds","Simulation Optimization":"Evaluates operational alternatives under stochastic disruption scenarios","Dynamic Dispatch":"Assigns haul trucks and loading shovels dynamically to reduce queuing","Drill and Blast":"Clusters borehole diameters and non-uniform patterns to manage rock fragmentation","Shortfall Mitigation":"Prevents production targets from slipping due to unscheduled delays"}' />
+**Figure 1:** Digital twin and simulation workflow for operational mining decision support
+
+## Dynamic Scheduling and Fleet Allocation
+
+Mining systems combine discrete-event simulation (DES) with deep reinforcement learning (DRL) to adapt production schedules when unexpected breakdowns, queue bottlenecks, or cycle shifts arise  (Seipolt et al., 2024; Yan et al., 2022; Noriega & Pourrahimian, 2024; Gan et al., 2023).
+
+- **Deep Q-Learning shovel allocation** trained on discrete-event simulators learns robust three-month scheduling strategies that consistently hit crusher hourly targets under haulage uncertainty  (Noriega & Pourrahimian, 2024).
+- **Hierarchical and multi-agent frameworks** separate maintenance selection from equipment dispatching using multi-head deep Q-networks, outperforming mathematical solvers in execution runtime  (Yan et al., 2022; Ouahabi et al., 2024; Rojas et al., 2025).
+- **Digital twin synchronization** updates virtual representations of assets to enable live rescheduling during sudden disruptions, reducing deviations between planned and actual output  (Yan et al., 2022; Kuhn & Antonino, 2023; Tong et al., 2025).
+
+Dynamic operational flow is illustrated in plant simulators, which couple multi-machine operations to virtual process streams for live optimization and control. **Figure 2:** Simulation architecture integrating plant operational flow with virtual monitoring systems  (Beloglazov et al., 2020)## Blasting Optimization and Shortfall Prevention
+
+Modern drill-and-blast operations utilize digital twins and mathematical programming to balance rock fragmentation against machine vibration, drill-rig wear, and haul-truck path navigation  (Perincek et al., 2025).
+
+- **Non-uniform pattern optimization** varies hole burden and spacing to reflect rock hardness changes, boosting fragmentation by 3% to 4% while lowering overall hole counts  (Perincek et al., 2025).
+- **Excavation parameter control** using hybrid graph-temporal deep networks and multi-objective optimization enhances machine penetration and lowers tool wear by 21.12%  (Zhang et al., 2024).
+- **Predictive maintenance twins** identify anomalous component wear on mobile equipment, mills, and conveyor belts to avert unplanned downtime  (Beloglazov et al., 2020; , 2026; Rojas et al., 2025).
+
+## Feasible Lightweight Prototype Approaches
+
+Deploying enterprise-grade bidirectional digital twins across an entire mine complex requires massive sensor instrumentation and software infrastructure  (Seipolt et al., 2024; Klebanov et al., 2025; Rojas et al., 2025; Cheng et al., 2024). For rapid prototyping, literature validates modular, lower-complexity architectures combining standard Python environments, discrete-event wrappers, and offline surrogate models  (Seipolt et al., 2024; Savolainen & Urbani, 2021; Xu et al., 2022; Nsiye et al.).
+
+| Component Layer | Recommended Lightweight Approach | Operational Mechanism | Key Reference |
+| :--- | :--- | :--- | :--- |
+| **Simulation Core** | Python Discrete-Event Simulation (`SimPy` / Gym) | Models trucks, shovels, and crushers with stochastic service distributions | Nsiye et al.  (Nsiye et al.)|
+| **State Coupling** | Unidirectional Digital Shadow | Ingests fleet dispatch tables or telematics logs without closed-loop actuation | Seipolt et al.  (Seipolt et al., 2024)|
+| **Decision Engine** | Off-line Trained RL or Heuristic Dispatch | Deep Q-Learning or rule heuristics evaluated against simulated mine states | Noriega & Pourrahimian  (Noriega & Pourrahimian, 2024)|
+| **Surrogate Speedup** | Predictive ML Surrogate (SAMPLE method) | Replaces intensive simulations with regressors to guide search budgets | Xu et al.  (Xu et al., 2022)|
+| **Financial Linkage** | System Dynamics Cash-Flow Wrapper | Translates equipment availability directly into shift-level tonnage and profit | Savolainen & Urbani  (Savolainen & Urbani, 2021)|
+
+**Figure 3:** Architectural design choices for a lightweight mining decision-support prototype
+
+These modular simulation components provide agile frameworks to evaluate shortfall mitigation strategies before implementing full-scale, automated bidirectional control  (Keshvarinia et al., 2025; Savolainen & Urbani, 2021; Nsiye et al.).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+(2026). IoT-Driven Digital Twins for Manufacturing Optimization: Hybrid Modelling, Reinforcement Learning and Sustainable Operations. *International Journal of Computational and Experimental Science and Engineering*. https://doi.org/10.22399/ijcesen.5050
+ 
+Beloglazov, I., Petrov, P., & Bazhin, V. (2020). The concept of digital twins for tech operator training simulator design for mining and processing industry. *Eurasian Mining*. https://doi.org/10.17580/em.2020.02.12
+ 
+Cheng, N., Wang, X.-C., Li, Z., Yin, Z., Luan, T., & Shen, X. (2024). Toward Enhanced Reinforcement Learning-Based Resource Management via Digital Twin: Opportunities, Applications, and Challenges. *IEEE Network, 39*, 189-196. https://doi.org/10.1109/mnet.2024.3438543
+ 
+Gan, X., Zuo, Y., Zhang, A., Li, S., & Tao, F. (2023). Digital twin-enabled adaptive scheduling strategy based on deep reinforcement learning. *Science China Technological Sciences, 66*, 1937 - 1951. https://doi.org/10.1007/s11431-022-2413-5
+ 
+Keshvarinia, M., MacKenzie, C. A., & Zhao, Z. (2025). A simulation-based digital twin model for data-driven decision optimization. *Decision Analytics Journal*. https://doi.org/10.1016/j.dajour.2025.100646
+ 
+Klebanov, A., Eremkin, I. V., & Gabusu, P. A. (2025). Digital twins of control processes for highly automated mining transport complexes. *Mining Industry Journal (Gornay Promishlennost)*. https://doi.org/10.30686/1609-9192-2025-4-61-70
+ 
+Kuhn, T., & Antonino, P. (2023). Towards live decision-making for service-based production: Integrated process planning and scheduling with Digital Twins and Deep-Q-Learning. *Comput. Ind., 149*, 103933. https://doi.org/10.1016/j.compind.2023.103933
+ 
+Noriega, R., & Pourrahimian, Y. (2024). Shovel allocation and scheduling for open-pit mining using deep reinforcement learning. *International Journal of Mining, Reclamation and Environment, 38*, 442 - 459. https://doi.org/10.1080/17480930.2024.2323325
+ 
+Nsiye, E., Wright, T., Tse, B., & Mondesire, S. C. A Micro-Discrete Event Simulation Environment for Production Scheduling in Manufacturing Digital Twins.
+ 
+Ouahabi, N., Chebak, A., Kamach, O., & Zegrari, M. (2024). Dynamic production scheduling and maintenance planning under opportunistic grouping. *Comput. Ind. Eng., 199*, 110646. https://doi.org/10.1016/j.cie.2024.110646
+ 
+Perincek, O., Loxton, R. C., Kulkarni, S., & Arthur, D. (2025). Drill and Blast Decision Support to Optimize Hole Position, Explosives, and Drill Bit Clusters. *Mining, Metallurgy & Exploration, 42*, 2011 - 2022. https://doi.org/10.1007/s42461-025-01309-x
+ 
+Rojas, L., Peña, Á., & García, J. (2025). AI-Driven Predictive Maintenance in Mining: A Systematic Literature Review on Fault Detection, Digital Twins, and Intelligent Asset Management. *Applied Sciences*. https://doi.org/10.3390/app15063337
+ 
+Savolainen, J., & Urbani, M. (2021). Maintenance optimization for a multi-unit system with digital twin simulation. *Journal of Intelligent Manufacturing, 32*, 1953 - 1973. https://doi.org/10.1007/s10845-021-01740-z
+ 
+Seipolt, A., Buschermöhle, R., Haag, V., Hasselbring, W., Schumacher, M., & Wilbers, H. (2024). Reinforcement learning and digital twin-driven optimization of production scheduling with the digital model playground. *Discover Internet of Things, 4*. https://doi.org/10.1007/s43926-024-00087-0
+ 
+Tong, H., Chen, M., Zhao, J., Hu, Y., Yang, Z., Liu, Y., & Yin, C.-C. (2025). Continual Reinforcement Learning for Digital Twin Synchronization Optimization. *IEEE Transactions on Mobile Computing, 24*, 6843-6857. https://doi.org/10.1109/tmc.2025.3546507
+ 
+Xu, J., Çelik, N., & Chen, C.-H. (2022). Real-time digital twin-based optimization with predictive simulation learning. *Journal of Simulation, 18*, 47 - 64. https://doi.org/10.1080/17477778.2022.2046520
+ 
+Yan, Q., Wang, H., & Wu, F. (2022). Digital twin-enabled dynamic scheduling with preventive maintenance using a double-layer Q-learning algorithm. *Comput. Oper. Res., 144*, 105823. https://doi.org/10.1016/j.cor.2022.105823
+ 
+Zhang, L.-M., Guo, J., Fu, X.-L., Tiong, R. L., & Zhang, P. (2024). Digital twin enabled real-time advanced control of TBM operation using deep learning methods. *Automation in Construction*. https://doi.org/10.1016/j.autcon.2023.105240
+ 
+
+
+# **Earth Observation** Informs Mining Disruption Risk
+
+Recent research integrates satellite Earth observation variables with mining operational records across three core facets: **ground deformation and geo-hazard forecasting**, **hydrological flooding and soil moisture modeling**, and **extreme weather and operational convergence risks**  (Qin et al., 2021; Kopec et al., 2020; Cruz & Da Silva, 2026; Cieślik et al., 2024).
+
+## Geo-Hazard and Geotechnical Forecasting
+
+Mining studies combine satellite radar interferometry, high-resolution optical imagery, and digital terrain models with extraction records to predict surface instability and infrastructure hazards  (Qin et al., 2021; Yu et al., 2026; Cieślik et al., 2024). Machine learning models map nonlinear interactions between excavation geometry, topography, and surface displacements to forecast slope failures and ground subsidence  (Qin et al., 2021; Cieślik et al., 2024).
+
+- **Underground extraction parameters**, including mined seam thickness and timing of mining, explain satellite radar subsidence velocities when trained on XGBoost models with SHAP attribution  (Cieślik et al., 2024).
+- **Random Forest classifiers** trained on high-resolution Gaofen-1 imagery, slope, aspect, and excavation elevation differences achieve 98.5% overall accuracy in identifying mining-induced geo-disasters  (Qin et al., 2021).
+- **Topographic lineament extraction** via digital elevation models, combined with historical excavation boundaries, isolates areas susceptible to landslides and ground fissures  (Qin et al., 2021; Cieślik et al., 2024).
+
+Predictive algorithms leverage satellite radar displacement time-series alongside excavation parameters to map ground instability over active underground panels. **Figure 1:** Surface subsidence velocities derived from Sentinel-1 SBAS radar interferometry over mining operations  (Cieślik et al., 2024)## Hydrological Disruption and Soil Moisture
+
+Satellite-derived moisture, surface water indices, and thermal bands reveal hydrological disruption zones, tailings seepage paths, and flooded haul roads  (Bobojonova et al., 2026; Buczyńska et al., 2025; Кавац, 2026). Optical and microwave data track how mine dewatering and surface alteration disrupt aeration-zone moisture retention and surface runoff dynamics  (Liu et al., 2025; Pan et al., 2025; Kopec et al., 2020).
+
+- **Interferometric radar and optical sensors** integrated with groundwater depth and elevation models map floodplains and wetland formations in underground mining districts with 76% accuracy  (Kopec et al., 2020).
+- **Temperature vegetation dryness indices** (TVDI) derived from Landsat surface temperature and NDVI isolate open-pit moisture disturbances up to 660 meters from active pits  (Liu et al., 2025).
+- **Tailings filtration leakage** and hidden water infiltration routes are detected outside containment dams using thermal-band soil moisture anomaly indices  (Bobojonova et al., 2026; Кавац, 2026).
+
+Satellite moisture monitoring models track spatial deviations in soil dryness across mining zones, as illustrated by long-term time-series evaluations. **Figure 2:** Temporal identification of soil moisture and dryness disturbance years across open-pit mining areas  (Liu et al., 2025)## Operational Risk and Climate Multipliers
+
+Recent research conceptualizes extreme precipitation, droughts, and land surface temperature spikes as operational risk multipliers that interact with fleet reliability and haulage safety  (Gond et al., 2026; Cruz & Da Silva, 2026; Spanidis & Roumpos, 2021). Climate-driven rainfall variability disrupts 24-hour operations, causing haul-truck slowdowns, excessive soil liquefaction, and pit dewatering delays  (Goveia-Assafrao et al., 2026; Spanidis & Roumpos, 2021).
+
+| Operational Risk Dimension | Integrated Satellite and Earth Data | Operational Impact on Mining Systems | Citations |
+| :--- | :--- | :--- | :--- |
+| **Haulage and Reliability Risk** | Extreme rainfall patterns and moisture | Causes vehicle slippage, haul-road closures, and unscheduled maintenance |  (Cruz & Da Silva, 2026; Goveia-Assafrao et al., 2026)|
+| **Thermal and Atmospheric Stress** | Land surface temperature and AOD | Elevates machinery overheating and atmospheric dust dispersion risks |  (Gond et al., 2026)|
+| **Slope Stability and Liquefaction** | Extreme precipitation and InSAR tilt | Weakens slope shear strength, precipitating pit-wall collapses |  (Spanidis & Roumpos, 2021)|
+| **Natural Hazard Uncertainty** | Topographic relief, flood extents, and SAR | Generates operational delays and capital cost overruns |  (Spanidis & Roumpos, 2021)|
+
+**Figure 3:** Operational disruption mechanisms driven by integrated satellite environmental variables
+
+Combining Earth observation feeds with shift-level telematics transitions mine management from retrospective incident reporting to proactive, climate-resilient risk management  (Bobojonova et al., 2026; Cruz & Da Silva, 2026; Spanidis & Roumpos, 2021).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Bobojonova, F., Safarova, N., Mardonov, M., Nurmurotov, I., & Yarashov, A. (2026). Remote sensing and data-driven assessment of environmental risk patterns in mining and metallurgical areas. 142970A - 142970A-10. https://doi.org/10.1117/12.3120582
+ 
+Buczyńska, A., Głąbicki, D., Kopeć, A., & Modlińska, P. (2025). Understanding Surface Water Dynamics in Post-Mining Area Through Multi-Source Remote Sensing and Spatial Regression Analysis. *Remote Sensing*. https://doi.org/10.3390/rs17183218
+ 
+Cieślik, K., Milczarek, W., Warchala, E., Kosydor, P., & Rozek, R. (2024). Identifying Factors Influencing Surface Deformations from Underground Mining Using SAR Data, Machine Learning, and the SHAP Method. *Remote. Sens., 16*, 2428. https://doi.org/10.3390/rs16132428
+ 
+Cruz, C. O., & Da Silva, A. A. L. M. (2026). Risk convergence in mining: Climate change as a multiplier of operational, geotechnical, and reliability threats. *The Extractive Industries and Society*. https://doi.org/10.1016/j.exis.2026.102007
+ 
+Gond, A. K., Jamal, A., & Verma, T. (2026). Machine Learning-Based Prediction of Land Surface Temperature in a Mining-Intensive Region Using Google Earth Engine. *Journal of Sustainable Forestry*. https://doi.org/10.1080/10549811.2026.2726764
+ 
+Goveia-Assafrao, J. G., Marnewick, A., & Mativenga, P. (2026). Adaptive operational strategies for surface mining: challenging climate change impacts and seasonality risks. *Mineral Economics*. https://doi.org/10.1007/s13563-025-00598-4
+ 
+Kopec, A., Trybała, P., Głąbicki, D., Buczyńska, A., Owczarz, K., Bugajska, N., Kozińska, P., Chojwa, M., & Gattner, A. (2020). Application of Remote Sensing, GIS and Machine Learning with Geographically Weighted Regression in Assessing the Impact of Hard Coal Mining on the Natural Environment. *Sustainability*. https://doi.org/10.3390/su12229338
+ 
+Liu, B., Liu, X., Wan, H., Y., & Lu, L. (2025). Long-Term Quantitative Analysis of the Temperature Vegetation Dryness Index to Assess Mining Impacts on Surface Soil Moisture: A Case Study of an Open-Pit Mine in Arid and Semiarid China. *Applied Sciences*. https://doi.org/10.3390/app15041850
+ 
+Pan, J., Chen, T., Jia, K., & Plaza, A. J. (2025). Toward Sustainable Mining Landscapes: Evaluating Spatiotemporal Changes and Driving Mechanisms of Eco-Environmental Quality in Central China. *IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing, 18*, 21144-21155. https://doi.org/10.1109/jstars.2025.3599164
+ 
+Qin, Y.-Z., Cao, L., Boloorani, A., & Wu, W. (2021). High-Resolution Mining-Induced Geo-Hazard Mapping Using Random Forest: A Case Study of Liaojiaping Orefield, Central China. *Remote. Sens., 13*, 3638. https://doi.org/10.3390/rs13183638
+ 
+Spanidis, P., & Roumpos, C. (2021). A Fuzzy-AHP Methodology for Planning the Risk Management of Natural Hazards in Surface Mining Projects. *Sustainability*. https://doi.org/10.3390/su13042369
+ 
+Yu, H.-X., Deng, Z., Zahidi, I., & Fai, C.-M. (2026). Advancing Sustainable Mining Practices: Policy Implications and Environmental Monitoring Strategies. *Sustainable Development*. https://doi.org/10.1002/sd.70623
+ 
+Кавац, O. (2026). МЕТОДОЛОГІЧНІ ПІДХОДИ ТА ІНФОРМАЦІЙНІ ТЕХНОЛОГІЇ СУПУТНИКОВОГО МОНІТОРИНГУ ЕКОЛОГІЧНИХ РИЗИКІВ У ГІРНИЧОДОБУВНІЙ ПРОМИСЛОВОСТІ. *System technologies*. https://doi.org/10.34185/1562-9945-4-165-2026-06
+ 
+
+
+
+# Critical Gaps in **Manganese Mining AI**
+
+Across recent mining research, three major unaddressed gaps emerge: **multimodal data fusion and uncertainty quantification**, **spatiotemporal change detection and risk forecasting**, and **automated, closed-loop decision support**  (Mkhohlakali et al., 2026; Bali et al., 2026; Nunes et al., 2026).
+
+## Evidence Coverage Across Exploration and Operations
+
+| | Manganese Exploration | Equipment Reliability | Mine Planning | Environmental Hazards |
+|---|---|---|---|---|
+| Multimodal Fusion | 2 papers | 1 paper | 2 papers | 4 papers |
+| Uncertainty Bounds | 2 papers | 1 paper | 2 papers | 2 papers |
+| Spatiotemporal Risk | No papers | No papers | No papers | 3 papers |
+| Autonomous Dispatch | No papers | 2 papers | 3 papers | 1 paper |
+**Figure 1:** Research gap matrix across technical capabilities and mining operational stages
+
+The literature landscape displays a pronounced structural divergence: while automated machine learning methods are applied to general exploration targeting  (Mkhohlakali et al., 2026; Sun et al., 2024)and short-term equipment management  (Azhari et al., 2023; Jung & Choi, 2021), unified decision-support platforms bridging remote sensing to shift dispatch remain nonexistent  (Nunes et al., 2026; Leung et al., 2023). For manganese specifically, models rely almost exclusively on static, multispectral lithological classifications  (Zhao et al., 2025), leaving dynamic operational variables entirely disconnected from resource models  (Liang et al., 2023; Nunes et al., 2026).
+
+## Multimodal Fusion and Uncertainty Estimation
+
+Current manganese exploration studies rely on static remote sensing overlays, failing to fuse deep multimodal features with rigorous uncertainty quantification  (Zhao et al., 2024; Zhao et al., 2025; Bali et al., 2026). Most prospective models apply basic algebraic or empirical weightings across satellite bands, which introduces subjective bias and leaves predictions uncalibrated against ground truth  (Zhao et al., 2025; Farahbakhsh et al., 2025).
+
+- Machine learning pipelines in manganese belts integrate multi-sensor datasets such as ASTER, Sentinel-2, Landsat-8, and GF-2, where Naïve Bayes achieves an AUC of 0.983  (Zhao et al., 2025), yet they omit unified deep embeddings  (Zhao et al., 2024; Chen et al., 2026). Alteration mapping relies heavily on manual endmember matching for minerals like pyrolusite and rhodochrosite. **Figure 2:** Spectral angle mapper alteration extractions for pyrolusite and associated mineralization anomalies  (Zhao et al., 2025)- Current mineral prospectivity systems lack standardized validation frameworks, spatial cross-validation, and systematic geophysical correction pipelines  (Bali et al., 2026).
+- Deep learning architectures rarely provide mathematical modeling of uncertainty bounds or operational degradation characteristics, discouraging industrial adoption  (Azhari et al., 2023; Kim et al., 2025).
+
+## Temporal Monitoring and Production-Risk Prediction
+
+Real-time mining workflows suffer from fragmented architectures that evaluate environmental hazards, machine telemetry, and production forecasts in isolation  (Ramadhan, 2025; Nunes et al., 2026). Predictive systems fail to track dynamic spatial changes or capture cascading production impacts resulting from extreme weather and geotechnical instability  (Arinez et al., 2020; Ramadhan, 2025; Nunes et al., 2026).
+
+- Environmental early-warning systems, such as EcoRisk-AI, demonstrate that fusing spatiotemporal satellite imagery with IoT sensors improves hazard lead time by 24–72 hours  (Ramadhan, 2025).
+- Integrating subsurface-surface deformation sensing through InSAR and pore-pressure telemetry reduces false negatives in slope-failure detection by 18% to 32%  (Ramadhan, 2025).
+- Existing production planning models remain structural silos that ignore real-time meteorological impacts, dust emission levels, and ground-water interactions on haul routes  (Azhari et al., 2023; Bali et al., 2026; Nunes et al., 2026).
+
+## Automated Decision Support and Mine Planning
+
+Dynamic mine planning systems lack autonomous optimization capabilities capable of integrating multi-agent reasoning with physics-based constraints  (Nunes et al., 2026; Leung et al., 2023). Commercial platforms operate via rigid schedules that cannot adjust dynamically to unexpected equipment failures, ore grade fluctuations, or logistics disruptions  (Liang et al., 2023; Nunes et al., 2026; Leung et al., 2023).
+
+- Intelligent systems predominantly process retrospective, offline telemetry rather than driving real-time online closed-loop optimization across haul fleets  (Azhari et al., 2023; Jung & Choi, 2021).
+- Emerging Large Language Model (LLM) agents lack safety validation protocols and certified alignment frameworks required for high-risk mine-site decision-making  (Nunes et al., 2026).
+- Modern operations lack a uniform data schema to merge visual model data with operational streaming parameters into a unified decision platform  (Liang et al., 2023).
+
+Bridging these gaps requires an end-to-end platform that unifies multimodal orebody embeddings, physics-constrained spatial uncertainty, and real-time agentic dispatching  (Zhao et al., 2024; Liang et al., 2023; Nunes et al., 2026; Leung et al., 2023).
+ 
+_These search results were found and analyzed using Consensus, an AI-powered search engine for research. Try it at https://consensus.app. © 2026 Consensus NLP, Inc. Personal, non-commercial use only; redistribution requires copyright holders’ consent._
+ 
+## References
+ 
+Arinez, J., Chang, Q., Gao, R., Xu, C.-Y., & Zhang, J. (2020). Artificial Intelligence in Advanced Manufacturing: Current Status and Future Outlook. *Journal of Manufacturing Science and Engineering*. https://doi.org/10.1115/1.4047855
+ 
+Azhari, F., Sennersten, C., Lindley, C., & Sellers, E. (2023). Deep learning implementations in mining applications: a compact critical review. *Artificial Intelligence Review*, 1-36. https://doi.org/10.1007/s10462-023-10500-9
+ 
+Bali, B., Goni, I., Manga, I., Kamureyina, E., Ezra, B., & Kwaha, F. I. (2026). Artificial intelligence driven aeromagnetic and satellite data fusion for mineral and groundwater resource mapping in sub Saharan Africa. *Discover Geoscience, 4*. https://doi.org/10.1007/s44288-026-00593-4
+ 
+Chen, Z.-J., Zhang, G., & Zhang, F. (2026). Multimodal AI for Real‐Time Food Safety and Quality: From Sensors to Foundation Models, Edge Deployment, and Regulation. *Food Science & Nutrition, 14*. https://doi.org/10.1002/fsn3.71534
+ 
+Farahbakhsh, E., Goel, D., Pimparkar, D., Müller, R., & Chandra, R. (2025). Convolutional Neural Networks for Mineral Prospecting Through Alteration Mapping with Remote Sensing Data. *PFG – Journal of Photogrammetry, Remote Sensing and Geoinformation Science, 93*, 379 - 400. https://doi.org/10.1007/s41064-025-00344-z
+ 
+Jung, D., & Choi, Y. (2021). Systematic Review of Machine Learning Applications in Mining: Exploration, Exploitation, and Reclamation. *Minerals*. https://doi.org/10.3390/min11020148
+ 
+Kim, T., Seong, M.-K., Lee, S., Kang, H., Park, E., Jung, I. D., & Kim, N. (2025). Multimodal deep learning for enhanced temperature prediction with uncertainty quantification in directed energy deposition (DED) process. *Virtual and Physical Prototyping, 20*. https://doi.org/10.1080/17452759.2025.2474532
+ 
+Leung, R., Hill, A. J., & Melkumyan, A. (2023). Automation and Artificial Intelligence Technology in Surface Mining: A Brief Introduction to Open-Pit Operations in the Pilbara [Survey]. *IEEE Robotics & Automation Magazine, 32*, 164-183. https://doi.org/10.1109/mra.2023.3328457
+ 
+Liang, R.-Y., Huang, C., Zhang, C.-G., Li, B., Saydam, S., & Canbulat, I. (2023). Exploring the Fusion Potentials of Data Visualization and Data Analytics in the Process of Mining Digitalization. *IEEE Access, 11*, 40608-40628. https://doi.org/10.1109/access.2023.3267813
+ 
+Mkhohlakali, A., Toona, M. P., Mogashane, T., Rampfumedzi, T., Madzivha, P., Letsoalo, M. R., Ntsasa, N., Sehata, J., Mukwevho, N., Ncedo, T., Mabowa, M. H., & Tshilongo, J. (2026). AI and Robotics Advancement in Analytical Mineral Characterization and Mining Processes: A Review and Research Trends Analysis. *Topics in Current Chemistry (Cham), 384*. https://doi.org/10.1007/s41061-026-00541-3
+ 
+Nunes, R., Risso, N., & Momayez, M. (2026). Large Language Model Agents in Dynamic Mine Planning: Challenges, Opportunities, and Future Directions. *IEEE Access, 14*, 117419-117438. https://doi.org/10.1109/access.2026.3714775
+ 
+Ramadhan, M. (2025). EcoRisk-AI: A multimodal artificial intelligence framework for early prediction of mining environmental risks in Indonesia. *Remote Sensing Technology in Defense and Environment*. https://doi.org/10.61511/rstde.v2i2.2025.2409
+ 
+Sun, K., Chen, Y., Geng, G., Lu, Z.-Y., Zhang, W., Song, Z., Guan, J.-Y., Zhao, Y., & Zhang, Z. (2024). A Review of Mineral Prospectivity Mapping Using Deep Learning. *Minerals*. https://doi.org/10.3390/min14101021
+ 
+Zhao, J.-H., He, L., Gong, J., He, Z.-W., Feng, Z.-W., Pang, J., Zeng, W., Yan, Y., & Yuan, Y. (2025). Predicting Manganese Mineralization Using Multi-Source Remote Sensing and Machine Learning: A Case Study from the Malkansu Manganese Belt, Western Kunlun. *Minerals*. https://doi.org/10.3390/min15020113
+ 
+Zhao, F., Zhang, C., & Geng, B.-C. (2024). Deep Multimodal Data Fusion. *ACM Computing Surveys, 56*, 1 - 36. https://doi.org/10.1145/3649447
+ 
