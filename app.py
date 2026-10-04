@@ -310,10 +310,35 @@ st.markdown("""
     ::-webkit-scrollbar-track { background: #0a0e1a; }
     ::-webkit-scrollbar-thumb { background: #1e3a5f; border-radius: 3px; }
 
-    /* Hide streamlit branding */
+    /* Hide streamlit branding while keeping the sidebar collapse/expand toggle button functional */
     #MainMenu { visibility: hidden; }
     footer { visibility: hidden; }
-    header { visibility: hidden; }
+    [data-testid="stToolbar"] { visibility: hidden; }
+    header[data-testid="stHeader"] {
+        background: transparent !important;
+        visibility: visible !important;
+        display: block !important;
+        z-index: 99999 !important;
+    }
+    [data-testid="collapsedControl"],
+    [data-testid="collapsedControl"] button,
+    [data-testid="stSidebarCollapseButton"],
+    header button {
+        visibility: visible !important;
+        display: inline-flex !important;
+        opacity: 1 !important;
+        color: #38bdf8 !important;
+    }
+    [data-testid="collapsedControl"] {
+        background: rgba(13, 27, 42, 0.95) !important;
+        border: 1px solid #1e3a5f !important;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5) !important;
+    }
+    [data-testid="collapsedControl"]:hover {
+        border-color: #38bdf8 !important;
+        box-shadow: 0 0 10px rgba(56, 189, 248, 0.5) !important;
+    }
 </style>
 """, unsafe_allow_html=True)
 

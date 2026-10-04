@@ -27,7 +27,11 @@ html,body,[class*="css"]{font-family:'Inter',sans-serif;}
 .tech-pill-purple{background:rgba(129,140,248,.1);border:1px solid rgba(129,140,248,.25);color:#818cf8;}
 .tech-pill-orange{background:rgba(251,146,60,.1);border:1px solid rgba(251,146,60,.25);color:#fb923c;}
 .tech-pill-green{background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.25);color:#4ade80;}
-#MainMenu{visibility:hidden;}footer{visibility:hidden;}header{visibility:hidden;}
+#MainMenu{visibility:hidden;}footer{visibility:hidden;}[data-testid="stToolbar"]{visibility:hidden;}
+header[data-testid="stHeader"]{background:transparent !important;visibility:visible !important;display:block !important;z-index:99999 !important;}
+[data-testid="collapsedControl"],[data-testid="collapsedControl"] button,[data-testid="stSidebarCollapseButton"],header button{visibility:visible !important;display:inline-flex !important;opacity:1 !important;color:#38bdf8 !important;}
+[data-testid="collapsedControl"]{background:rgba(13,27,42,.95) !important;border:1px solid #1e3a5f !important;border-radius:8px !important;box-shadow:0 4px 12px rgba(0,0,0,.5) !important;}
+[data-testid="collapsedControl"]:hover{border-color:#38bdf8 !important;box-shadow:0 0 10px rgba(56,189,248,.5) !important;}
 </style>
 """, unsafe_allow_html=True)
 

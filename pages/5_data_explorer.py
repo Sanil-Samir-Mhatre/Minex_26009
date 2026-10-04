@@ -25,7 +25,11 @@ html,body,[class*="css"]{font-family:'Inter',sans-serif;}
 .warning-box{background:rgba(251,146,60,.08);border:1px solid rgba(251,146,60,.25);border-left:3px solid #fb923c;border-radius:8px;padding:.75rem 1rem;font-size:.85rem;color:#94a3b8;margin:.75rem 0;}
 .section-header{font-size:1rem;font-weight:600;color:#e2e8f0;margin-bottom:.75rem;}
 .stat-card{background:#0d1b2a;border:1px solid #1e3a5f;border-radius:8px;padding:.6rem .9rem;margin:.25rem 0;display:flex;justify-content:space-between;align-items:center;}
-#MainMenu{visibility:hidden;}footer{visibility:hidden;}header{visibility:hidden;}
+#MainMenu{visibility:hidden;}footer{visibility:hidden;}[data-testid="stToolbar"]{visibility:hidden;}
+header[data-testid="stHeader"]{background:transparent !important;visibility:visible !important;display:block !important;z-index:99999 !important;}
+[data-testid="collapsedControl"],[data-testid="collapsedControl"] button,[data-testid="stSidebarCollapseButton"],header button{visibility:visible !important;display:inline-flex !important;opacity:1 !important;color:#38bdf8 !important;}
+[data-testid="collapsedControl"]{background:rgba(13,27,42,.95) !important;border:1px solid #1e3a5f !important;border-radius:8px !important;box-shadow:0 4px 12px rgba(0,0,0,.5) !important;}
+[data-testid="collapsedControl"]:hover{border-color:#38bdf8 !important;box-shadow:0 0 10px rgba(56,189,248,.5) !important;}
 </style>
 """, unsafe_allow_html=True)
 
